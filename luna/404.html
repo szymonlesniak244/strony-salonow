@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nie ma takiej strony – Pracownia Luna</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f4eee8">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <!-- ścieżki od „/”, bo serwer pokazuje tę stronę pod dowolnym adresem -->
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div style="position:relative;z-index:9999;background:#0b1220;color:#e8eef7;font:500 14px/1.45 system-ui,sans-serif;text-align:center;padding:10px 16px">Projekt portfolio: <strong>fikcyjny salon</strong>, dane i zdjęcia są przykładowe. Autor: <a href="https://szymonlesniak244.github.io" style="color:#2de2c4">Szymon Leśniak</a> · <a href="../" style="color:#2de2c4">o projekcie</a></div>
+  <a class="skip-link" href="#tresc">Przejdź do treści</a>
+
+  <header class="naglowek">
+    <div class="kontener">
+      <div class="naglowek__gora">
+        <a class="naglowek__logo" href="/" aria-label="Pracownia Luna – strona główna"><span class="ksiezyc" aria-hidden="true"></span>Pracownia Luna</a>
+        <a class="przycisk przycisk--maly" href="/rezerwacja.html">Umów wizytę</a>
+        <details class="menu-mobilne">
+          <summary aria-label="Menu"><span class="ikona-menu" aria-hidden="true"></span></summary>
+          <nav aria-label="Menu główne">
+            <ul>
+              <li><a href="/">Strona główna</a></li>
+              <li><a href="/uslugi.html">Usługi i cennik</a></li>
+              <li><a href="/o-nas.html">O nas i zespół</a></li>
+              <li><a href="/kontakt.html">Kontakt</a></li>
+            </ul>
+          </nav>
+        </details>
+      </div>
+      <nav class="menu" aria-label="Menu główne">
+        <ul>
+          <li><a href="/">Strona główna</a></li>
+          <li><a href="/uslugi.html">Usługi i cennik</a></li>
+          <li><a href="/o-nas.html">O nas i zespół</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="tresc" class="zgubiona ciemne">
+    <div class="kontener zgubiona__uklad">
+      <!-- nów: tej strony „nie widać”, po wczytaniu wyłania się tylko cienki sierp -->
+      <div class="zgubiona__ksiezyc" aria-hidden="true"></div>
+      <div>
+        <h1>Nie ma takiej strony</h1>
+        <p class="zgubiona__opis">Ta strona nie istnieje albo została przeniesiona. Sprawdź adres albo przejdź do jednej z tych stron:</p>
+        <ul class="zgubiona__linki">
+          <li><a href="/">Strona główna</a></li>
+          <li><a href="/uslugi.html">Usługi i cennik</a></li>
+          <li><a href="/o-nas.html">O nas i zespół</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+        </ul>
+        <div class="hero__przyciski">
+          <a class="przycisk" href="/rezerwacja.html">Umów wizytę</a>
+          <a class="przycisk przycisk--obrys" href="/">Wróć na stronę główną</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="stopka">
+    <div class="kontener">
+      <p><strong>Pracownia Luna</strong> · ul. Przykładowa 12, 30-001 Kraków · <a href="tel:+48000000000">+48 000 000 000</a></p>
+      <ul class="stopka__linki">
+        <li><a href="/polityka-prywatnosci.html">Polityka prywatności</a></li>
+        <li><a href="/regulamin-rezerwacji.html">Regulamin rezerwacji</a></li>
+      </ul>
+      <p class="stopka__demo">Strona demonstracyjna</p>
+    </div>
+  </footer>
+
+  <div class="pasek-rezerwacji">
+    <a class="przycisk" href="/rezerwacja.html">Umów wizytę</a>
+    <a class="przycisk przycisk--obrys" href="tel:+48000000000">Zadzwoń</a>
+  </div>
+
+  <script>
+    // Menu na telefonie działa bez JS; ten skrypt tylko zamyka je po kliknięciu linku i klawiszem Esc.
+    var menu = document.querySelector(".menu-mobilne");
+    if (menu) {
+      menu.addEventListener("click", function (e) {
+        if (e.target.closest("a")) menu.open = false;
+      });
+      menu.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && menu.open) {
+          menu.open = false;
+          menu.querySelector("summary").focus();
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,2154 @@
+/* Pracownia Luna – styl jasny, mobile first */
+
+:root {
+  --kolor-glowny: #f4eee8;          /* marka.kolor_glowny – jasne tło sekcji */
+  --kolor-akcent: #987b70;          /* marka.kolor_akcent – przyciski z czarnym tekstem: 5,4:1 (biały miałby tylko 3,9:1) */
+  --kolor-akcent-jasny: #ab9085;    /* przycisk po najechaniu, czarny tekst: 6,1:1 */
+  --kolor-akcent-ciemny: #6e5449;   /* linki i wyróżnienia na jasnym tle: 6,0:1 */
+  --przycisk-tekst: #000;
+  --tlo: #fbf8f5;
+  --tlo-sekcji: var(--kolor-glowny);
+  --tlo-karty: #fff;
+  --tekst: #2a211d;
+  --tekst-przygaszony: #5c4f49;
+  --linia: #e4d9cf;
+  --stopka-tlo: #2a211d;
+  --stopka-tekst: #f4eee8;
+  --stopka-link: #d9bfb2;
+  /* „noc” – ciemne tło hero i nagłówków podstron; jasny tekst ma na nim 14:1, przygaszony 8:1 */
+  --noc: #2a211d;
+  --noc-tekst: #f4eee8;
+  --noc-przygaszony: #cdbfb5;
+  --promien: 6px;
+  --szerokosc: 66rem;
+  --font-tekst: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-naglowki: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--tlo);
+  color: var(--tekst);
+  font-family: var(--font-tekst);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  overflow-wrap: break-word;
+  /* miejsce na przyklejony pasek „Umów wizytę” na telefonie */
+  padding-bottom: 4.5rem;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-naglowki);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 8vw, 3.4rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--kolor-akcent-ciemny);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--tekst);
+}
+
+:focus-visible {
+  outline: 3px solid var(--tekst);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.kontener {
+  width: 100%;
+  max-width: var(--szerokosc);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Link „Przejdź do treści” */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -10rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--tekst);
+  color: #fff;
+  border-radius: 0 0 6px 6px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+  color: #fff;
+}
+
+/* Przyciski */
+.przycisk {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border: 2px solid var(--kolor-akcent);
+  border-radius: var(--promien);
+  background: var(--kolor-akcent);
+  color: var(--przycisk-tekst);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.przycisk:hover {
+  background: var(--kolor-akcent-jasny);
+  border-color: var(--kolor-akcent-jasny);
+  color: var(--przycisk-tekst);
+}
+
+.przycisk--obrys {
+  background: transparent;
+  border-color: var(--kolor-akcent-ciemny);
+  color: var(--kolor-akcent-ciemny);
+}
+
+.przycisk--obrys:hover {
+  background: var(--kolor-akcent-ciemny);
+  border-color: var(--kolor-akcent-ciemny);
+  color: #fff;
+}
+
+/* numer telefonu w przycisku nie łamie się w połowie */
+.przycisk[href^="tel:"] {
+  white-space: nowrap;
+}
+
+.przycisk--maly {
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* Nagłówek strony */
+.naglowek {
+  position: relative; /* punkt odniesienia dla rozwijanego menu na telefonie */
+  background: var(--tlo);
+  border-bottom: 1px solid var(--linia);
+}
+
+.naglowek__gora {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.naglowek__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-right: auto;
+  min-height: 44px;
+  color: var(--tekst);
+  font-family: var(--font-naglowki);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-decoration: none;
+  /* na wąskim ekranie nazwa może zejść do dwóch linijek, przycisk „Umów wizytę” zostaje w jednej */
+  min-width: 0;
+}
+
+.naglowek__logo:hover {
+  color: var(--kolor-akcent-ciemny);
+}
+
+/* sierp księżyca obok nazwy (dekoracja) */
+.ksiezyc {
+  flex: none;
+  width: 1.1em;
+  height: 1.1em;
+  border-radius: 50%;
+  box-shadow: inset 0.3em -0.12em 0 0 var(--kolor-akcent);
+  transform: rotate(-20deg);
+}
+
+/* Menu hamburger na telefonie (poniżej 700 px), działa bez JavaScriptu */
+.menu-mobilne summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--linia);
+  border-radius: var(--promien);
+  color: var(--tekst);
+  cursor: pointer;
+  list-style: none;
+}
+
+.menu-mobilne summary::-webkit-details-marker {
+  display: none;
+}
+
+.ikona-menu,
+.ikona-menu::before,
+.ikona-menu::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.ikona-menu {
+  position: relative;
+}
+
+.ikona-menu::before,
+.ikona-menu::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.ikona-menu::before {
+  top: -7px;
+}
+
+.ikona-menu::after {
+  top: 7px;
+}
+
+/* po otwarciu trzy kreski zmieniają się w „X” */
+.menu-mobilne[open] .ikona-menu {
+  background: transparent;
+}
+
+.menu-mobilne[open] .ikona-menu::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu-mobilne[open] .ikona-menu::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.menu-mobilne nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  background: var(--tlo);
+  border-bottom: 1px solid var(--linia);
+  box-shadow: 0 8px 16px rgba(42, 33, 29, 0.1);
+}
+
+.menu-mobilne ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-mobilne li + li {
+  border-top: 1px solid var(--linia);
+}
+
+.menu-mobilne a {
+  display: block;
+  padding: 0.85rem 1rem;
+  color: var(--tekst);
+  text-decoration: none;
+}
+
+.menu-mobilne a:hover,
+.menu-mobilne a[aria-current="page"] {
+  color: var(--kolor-akcent-ciemny);
+  background: var(--tlo-sekcji);
+}
+
+.menu-mobilne a[aria-current="page"] {
+  font-weight: 600;
+}
+
+.menu-mobilne a:focus-visible {
+  outline-offset: -3px;
+}
+
+.menu {
+  display: none;
+}
+
+@media (max-width: 24.99em) {
+  .naglowek__logo {
+    font-size: 1.1rem;
+  }
+
+  .naglowek__gora .przycisk--maly {
+    padding: 0.5rem 0.7rem;
+  }
+}
+
+@media (max-width: 21.5em) {
+  .ksiezyc {
+    display: none;
+  }
+
+  .naglowek__gora .przycisk--maly {
+    font-size: 0.88rem;
+  }
+}
+
+@media (min-width: 43.75em) {
+  .menu-mobilne {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+  }
+}
+
+.menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.4rem;
+  margin: 0;
+  padding: 0 0 0.75rem;
+  list-style: none;
+}
+
+.menu a {
+  display: inline-block;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  color: var(--tekst);
+  text-decoration: none;
+  font-size: 0.98rem;
+}
+
+.menu a:hover {
+  color: var(--kolor-akcent-ciemny);
+  border-bottom-color: var(--linia);
+}
+
+.menu a[aria-current="page"] {
+  color: var(--kolor-akcent-ciemny);
+  border-bottom-color: var(--kolor-akcent);
+  font-weight: 600;
+}
+
+/* Ciemne tło („noc”): hero i nagłówki podstron */
+.ciemne {
+  background: var(--noc);
+  color: var(--noc-tekst);
+}
+
+.ciemne a:not(.przycisk) {
+  color: var(--noc-tekst);
+}
+
+.ciemne :focus-visible {
+  outline-color: var(--noc-tekst);
+}
+
+.ciemne .przycisk--obrys {
+  border-color: var(--noc-tekst);
+  color: var(--noc-tekst);
+}
+
+.ciemne .przycisk--obrys:hover {
+  background: var(--noc-tekst);
+  border-color: var(--noc-tekst);
+  color: var(--tekst);
+}
+
+/* Hero: zdjęcie w tarczy księżyca */
+.hero {
+  overflow: hidden;
+  padding: 2rem 0 3.5rem;
+}
+
+.hero__uklad {
+  display: grid;
+  gap: 2rem;
+}
+
+.hero__ksiezyc {
+  position: relative;
+  order: -1; /* na telefonie tarcza nad tekstem */
+  justify-self: end;
+  width: 15rem;
+  margin-right: -2.5rem; /* tarcza lekko wychodzi za prawą krawędź */
+}
+
+/* cienka orbita wokół tarczy */
+.hero__ksiezyc::before {
+  content: "";
+  position: absolute;
+  inset: -1rem;
+  border: 1px solid rgba(244, 238, 232, 0.28);
+  border-radius: 50%;
+}
+
+.hero__tarcza {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 4rem rgba(244, 238, 232, 0.16);
+}
+
+.hero__tarcza img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+
+/* „wschód księżyca”: cień raz zsuwa się z tarczy po wczytaniu strony */
+.hero__tarcza::after {
+  content: "";
+  position: absolute;
+  inset: -6%;
+  border-radius: 50%;
+  background: var(--noc);
+  filter: blur(6px);
+  transform: translateX(110%);
+  animation: wschod 2.4s cubic-bezier(0.3, 0.1, 0.2, 1) 0.2s backwards;
+}
+
+@keyframes wschod {
+  from {
+    transform: translateX(8%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__tarcza::after {
+    animation: none;
+  }
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 11vw, 4.6rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  margin-bottom: 0.9rem;
+}
+
+.hero__slogan {
+  font-family: var(--font-naglowki);
+  font-size: clamp(1.2rem, 4vw, 1.55rem);
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--noc-przygaszony);
+}
+
+.hero__opis {
+  max-width: 34rem;
+  color: var(--noc-przygaszony);
+}
+
+.hero__miejsce {
+  margin: 1.75rem 0 0;
+  color: var(--noc-przygaszony);
+  font-size: 0.93rem;
+}
+
+.hero__przyciski {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* Nagłówek podstrony: ciemny pasek z małym sierpem księżyca */
+.naglowek-strony {
+  position: relative;
+  overflow: hidden;
+  padding: 2.5rem 0 2.25rem;
+}
+
+.naglowek-strony::after {
+  content: "";
+  position: absolute;
+  right: -2.5rem;
+  top: 50%;
+  width: 9rem;
+  height: 9rem;
+  margin-top: -4.5rem;
+  border-radius: 50%;
+  box-shadow: inset 2.2rem -0.8rem 0 0 rgba(244, 238, 232, 0.14);
+  transform: rotate(-20deg);
+  pointer-events: none;
+}
+
+.naglowek-strony .kontener {
+  position: relative;
+  z-index: 1;
+}
+
+.naglowek-strony h1 {
+  font-size: clamp(2.1rem, 8vw, 3.2rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.6rem;
+}
+
+.naglowek-strony p {
+  max-width: 40rem;
+  margin: 0;
+  color: var(--noc-przygaszony);
+}
+
+/* Sekcje */
+.sekcja {
+  padding: 3.5rem 0;
+}
+
+.sekcja--tlo {
+  background: var(--tlo-sekcji);
+}
+
+.sekcja__wstep {
+  max-width: 40rem;
+  color: var(--tekst-przygaszony);
+  margin-bottom: 2rem;
+}
+
+.sekcja h2::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin-top: 0.7rem;
+  background: var(--kolor-akcent);
+}
+
+/* mniejsze nagłówki wewnątrz kart i kolumn podstron */
+.cennik__kategoria h2,
+.rezerwacja__bok h2,
+.kontakt h2 {
+  font-size: 1.4rem;
+}
+
+.cennik__kategoria h2::after,
+.rezerwacja__bok h2::after,
+.kontakt h2::after {
+  display: none;
+}
+
+.kontakt address {
+  margin-bottom: 1rem;
+}
+
+.kontakt p + h2,
+.kontakt ul + h2 {
+  margin-top: 2rem;
+}
+
+.sekcja__dalej {
+  margin: 2rem 0 0;
+}
+
+/* zdjęcia w kształcie łuku – księżyc wschodzący nad horyzontem */
+.luk {
+  width: 100%;
+  border-radius: 999px 999px 0 0;
+  object-fit: cover;
+  background: var(--tlo-sekcji);
+}
+
+/* Usługi i cennik */
+.cennik {
+  display: grid;
+}
+
+/* kategoria: zdjęcie, nazwa i osoba z boku, lista cen obok – jak karta zabiegów w spa */
+.cennik__kategoria {
+  display: grid;
+  gap: 1.25rem;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--linia);
+  scroll-margin-top: 1rem;
+}
+
+.cennik__kategoria:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.cennik__bok .luk {
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1.1rem;
+}
+
+.cennik__kategoria h2 {
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  font-weight: 500;
+}
+
+.cennik__bok .wybor__osoba {
+  margin: 0;
+  border-bottom: 0;
+}
+
+/* skróty do kategorii na górze cennika */
+.skroty ul {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0 0 2.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.skroty a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.2rem;
+  border-radius: var(--promien);
+  color: var(--tekst);
+  font-size: 0.93rem;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+}
+
+.skroty img {
+  width: clamp(3.5rem, 17vw, 5.5rem);
+  height: clamp(3.5rem, 17vw, 5.5rem);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 3px var(--tlo), 0 0 0 4px var(--linia);
+  transition: box-shadow 0.25s ease;
+}
+
+.skroty a:hover {
+  color: var(--kolor-akcent-ciemny);
+}
+
+.skroty a:hover img {
+  box-shadow: 0 0 0 3px var(--tlo), 0 0 0 5px var(--kolor-akcent-ciemny);
+}
+
+.cennik__lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cennik__pozycja {
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--linia);
+}
+
+.cennik__pozycja:first-child {
+  border-top: 0;
+  padding-top: 0.25rem;
+}
+
+/* nazwa … kropki … cena */
+.cennik__wiersz {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.cennik__wiersz::after {
+  content: "";
+  order: 1;
+  flex: 1 1 1rem;
+  min-width: 1rem;
+  border-bottom: 1px dotted var(--kolor-akcent);
+  transform: translateY(-0.3em);
+}
+
+.cennik__cena {
+  order: 2;
+}
+
+.cennik__nazwa {
+  font-weight: 600;
+}
+
+.cennik__cena {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cennik__czas {
+  color: var(--tekst-przygaszony);
+  font-size: 0.93rem;
+}
+
+.cennik__opis {
+  margin: 0.2rem 0 0;
+  color: var(--tekst-przygaszony);
+  font-size: 0.95rem;
+}
+
+/* O nas */
+.o-nas {
+  max-width: 42rem;
+}
+
+.o-nas p {
+  font-size: 1.1rem;
+}
+
+/* zdjęcie obok tekstu (O nas na stronie głównej i na podstronie) */
+.obok {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.obok .o-nas {
+  max-width: 36rem;
+}
+
+.obok__zdjecia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: end;
+}
+
+.obok__zdjecia .luk {
+  aspect-ratio: 3 / 4;
+}
+
+/* drugie zdjęcie niżej, żeby para nie wyglądała jak tabela */
+.obok__zdjecia .luk + .luk {
+  margin-bottom: -2rem;
+}
+
+.obok > .luk {
+  aspect-ratio: 4 / 5;
+  max-width: 24rem;
+}
+
+@media (min-width: 48em) {
+  .obok {
+    grid-template-columns: 5fr 6fr;
+    gap: 4rem;
+  }
+}
+
+/* Zespół */
+.zespol {
+  display: grid;
+  gap: 3.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* osoba: duży portret w łuku i tekst obok, na komputerze na zmianę z lewej i prawej */
+.osoba {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  scroll-margin-top: 1rem;
+}
+
+.osoba__zdjecie {
+  aspect-ratio: 4 / 5;
+  max-width: 24rem;
+  object-position: 50% 25%;
+}
+
+.osoba h3 {
+  margin-bottom: 0.15rem;
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  font-weight: 500;
+}
+
+.osoba .wybor__akcje {
+  margin-top: 1.5rem;
+}
+
+.osoba__rola {
+  color: var(--kolor-akcent-ciemny);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.osoba__uslugi-tytul {
+  margin: 0 0 0.4rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+.znaczniki {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.znaczniki li {
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--tlo-sekcji);
+  color: var(--tekst);
+  font-size: 0.88rem;
+}
+
+/* Opinie */
+.opinie {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.opinia {
+  height: 100%;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--kolor-akcent);
+}
+
+.opinia blockquote {
+  margin: 0 0 1rem;
+  font-family: var(--font-naglowki);
+  font-size: 1.2rem;
+  line-height: 1.55;
+}
+
+.opinia blockquote p::before {
+  content: "„";
+}
+
+.opinia blockquote p::after {
+  content: "”";
+}
+
+.opinia figcaption {
+  color: var(--tekst-przygaszony);
+  font-size: 0.93rem;
+}
+
+/* Wezwanie do rezerwacji */
+.wezwanie {
+  text-align: center;
+}
+
+.wezwanie h2::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wezwanie p {
+  max-width: 34rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--tekst-przygaszony);
+}
+
+.wezwanie .hero__przyciski {
+  justify-content: center;
+}
+
+/* Rezerwacja */
+.rezerwacja__widget {
+  margin: 0 0 0.75rem;
+}
+
+.rezerwacja__widget:empty {
+  display: none;
+}
+
+.rezerwacja__widget iframe {
+  display: block;
+  width: 100%;
+  min-height: 40rem;
+  border: 0;
+}
+
+.rezerwacja__zapas {
+  margin-bottom: 2.5rem;
+  color: var(--tekst-przygaszony);
+}
+
+.rezerwacja__karta {
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--promien);
+}
+
+.rezerwacja__przyciski {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.zasady {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+/* sierp księżyca zamiast kropki */
+.zasady li {
+  position: relative;
+  padding-left: 1.9rem;
+}
+
+.zasady li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  box-shadow: inset 0.3em -0.1em 0 0 var(--kolor-akcent-ciemny);
+  transform: rotate(-20deg);
+}
+
+/* Kontakt */
+.kontakt {
+  display: grid;
+  gap: 2rem;
+}
+
+.kontakt address {
+  font-style: normal;
+}
+
+.godziny {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.godziny th,
+.godziny td {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--linia);
+  text-align: left;
+  vertical-align: top;
+}
+
+.godziny th {
+  padding-right: 1rem;
+  font-weight: 600;
+}
+
+.godziny td {
+  white-space: nowrap;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Stopka */
+.stopka {
+  padding: 2.5rem 0 1.5rem;
+  background: var(--stopka-tlo);
+  color: var(--stopka-tekst);
+  font-size: 0.95rem;
+}
+
+.stopka a {
+  color: var(--stopka-link);
+}
+
+.stopka a:hover {
+  color: #fff;
+}
+
+.stopka :focus-visible {
+  outline-color: #fff;
+}
+
+.stopka__linki {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stopka__zrodla {
+  margin: 0;
+  color: var(--stopka-link);
+  font-size: 0.88rem;
+}
+
+/* zdjęcie pod godzinami otwarcia */
+.kontakt__zdjecie {
+  margin-top: 2rem;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--promien);
+}
+
+.stopka__demo {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: var(--stopka-link);
+  color: var(--tekst);
+  font-weight: 600;
+}
+
+/* Przyklejony pasek na telefonie */
+.pasek-rezerwacji {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
+  background: var(--tlo);
+  border-top: 1px solid var(--linia);
+  box-shadow: 0 -4px 16px rgba(42, 33, 29, 0.08);
+}
+
+.pasek-rezerwacji .przycisk {
+  flex: 1 1 auto;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  white-space: nowrap;
+}
+
+/* Dokumenty prawne */
+.uwaga-szablon {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.25rem;
+  background: var(--tlo-sekcji);
+  border-left: 4px solid var(--kolor-akcent);
+  border-radius: 4px;
+}
+
+.do-uzupelnienia {
+  padding: 0 0.3rem;
+  background: #fff3c4;
+  border: 1px dashed #8a6d1d;
+  border-radius: 4px;
+  color: var(--tekst);
+}
+
+/* Tablet i komputer */
+@media (min-width: 40em) {
+  .rezerwacja__przyciski {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 48em) {
+  body {
+    padding-bottom: 0;
+  }
+
+  .pasek-rezerwacji {
+    display: none;
+  }
+
+  .hero {
+    padding: 4.5rem 0 5rem;
+  }
+
+  .hero__uklad {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .hero__ksiezyc {
+    order: 2;
+    width: clamp(18rem, 36vw, 28rem);
+    margin-right: 1rem;
+  }
+
+  .naglowek-strony {
+    padding: 4rem 0 3.5rem;
+  }
+
+  .naglowek-strony::after {
+    right: 8%;
+    width: 13rem;
+    height: 13rem;
+    margin-top: -6.5rem;
+    box-shadow: inset 3.2rem -1.1rem 0 0 rgba(244, 238, 232, 0.14);
+  }
+
+  .sekcja {
+    padding: 5rem 0;
+  }
+
+  .opinie {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .kontakt {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+@media (min-width: 60em) {
+  /* Menu w jednej linii */
+  .naglowek {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .naglowek .kontener {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .naglowek__gora {
+    display: contents;
+  }
+
+  .naglowek__logo {
+    margin-right: auto;
+    padding: 0.75rem 0;
+  }
+
+  .menu {
+    order: 2;
+  }
+
+  .menu ul {
+    padding: 0;
+  }
+
+  .naglowek__gora .przycisk {
+    order: 3;
+  }
+}
+
+/* ---------- Strona główna: nocne niebo, wybór zabiegu, fazy księżyca ---------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* kilka gwiazd na nocnym tle hero i zaokrąglony „horyzont” u dołu */
+.hero {
+  position: relative;
+  padding-bottom: 5rem;
+}
+
+/* gwiazdy na nocnym niebie (hero i strona 404) */
+.hero,
+.zgubiona {
+  background-image:
+    radial-gradient(1.5px 1.5px at 8% 18%, rgba(244, 238, 232, 0.7), transparent),
+    radial-gradient(1px 1px at 22% 64%, rgba(244, 238, 232, 0.5), transparent),
+    radial-gradient(1px 1px at 37% 9%, rgba(244, 238, 232, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 48% 46%, rgba(244, 238, 232, 0.35), transparent),
+    radial-gradient(1px 1px at 58% 88%, rgba(244, 238, 232, 0.5), transparent),
+    radial-gradient(1px 1px at 66% 14%, rgba(244, 238, 232, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 92% 72%, rgba(244, 238, 232, 0.55), transparent),
+    radial-gradient(1px 1px at 97% 30%, rgba(244, 238, 232, 0.5), transparent);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: -15%;
+  right: -15%;
+  bottom: -1px;
+  height: 3rem;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: var(--tlo);
+}
+
+.hero__status[hidden] {
+  display: none;
+}
+
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.5rem 0 0;
+  font-size: 0.95rem;
+}
+
+.hero__status::before {
+  content: "";
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--noc-tekst);
+}
+
+.hero__status[data-stan="otwarte"]::before {
+  background: var(--noc-tekst);
+  box-shadow: 0 0 0.6rem rgba(244, 238, 232, 0.8);
+}
+
+.hero__status + .hero__miejsce {
+  margin-top: 0.4rem;
+}
+
+/* Wybór zabiegu: kategorie jako okrągłe zdjęcia, pod spodem jeden panel */
+.wybor__opcje {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  border: 0;
+}
+
+.wybor__opcja {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.2rem;
+  border-radius: var(--promien);
+  font-size: 0.93rem;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* prawdziwe pole wyboru leży na całej etykiecie: działa myszą, dotykiem i strzałkami */
+.wybor__opcja input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.wybor__opcja img {
+  width: clamp(3.5rem, 17vw, 5.5rem);
+  height: clamp(3.5rem, 17vw, 5.5rem);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 3px var(--tlo), 0 0 0 4px var(--linia);
+  transition: box-shadow 0.25s ease;
+}
+
+.wybor__opcja:hover img {
+  box-shadow: 0 0 0 3px var(--tlo), 0 0 0 4px var(--kolor-akcent);
+}
+
+.wybor__opcja:has(:checked) img {
+  box-shadow: 0 0 0 3px var(--tlo), 0 0 0 5px var(--kolor-akcent-ciemny);
+}
+
+.wybor__opcja:has(:checked) span {
+  color: var(--kolor-akcent-ciemny);
+  font-weight: 600;
+}
+
+.wybor__opcja:has(:focus-visible) {
+  outline: 3px solid var(--tekst);
+  outline-offset: 2px;
+}
+
+.wybor__panel {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* bez obsługi :has widać wszystkie panele jeden pod drugim */
+.wybor__panel + .wybor__panel {
+  margin-top: 3rem;
+}
+
+@supports selector(:has(*)) {
+  .wybor__panel {
+    display: none;
+  }
+
+  .wybor__panel + .wybor__panel {
+    margin-top: 0;
+  }
+
+  .wybor:has([value="twarz"]:checked) [data-kategoria="twarz"],
+  .wybor:has([value="brwi"]:checked) [data-kategoria="brwi"],
+  .wybor:has([value="rzesy"]:checked) [data-kategoria="rzesy"],
+  .wybor:has([value="wosk"]:checked) [data-kategoria="wosk"] {
+    display: grid;
+    animation: pojaw 0.45s ease-out;
+  }
+}
+
+@keyframes pojaw {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wybor__panel {
+    animation: none !important;
+  }
+}
+
+.wybor__panel .luk {
+  aspect-ratio: 1;
+}
+
+.wybor__kategoria {
+  margin: 0 0 0.25rem;
+  color: var(--kolor-akcent-ciemny);
+  font-size: 0.95rem;
+}
+
+.wybor h3 {
+  font-size: clamp(1.6rem, 6vw, 2.3rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.6rem;
+}
+
+.wybor__cena {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--tekst-przygaszony);
+}
+
+.wybor__cena strong {
+  color: var(--tekst);
+  font-size: 1.35rem;
+}
+
+.wybor__opis,
+.wybor__inne {
+  color: var(--tekst-przygaszony);
+}
+
+.wybor__osoba {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 1.25rem 0 1.5rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--linia);
+  border-bottom: 1px solid var(--linia);
+}
+
+.wybor__osoba img {
+  flex: none;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 25%;
+}
+
+.wybor__osoba p {
+  margin: 0;
+}
+
+.wybor__akcje {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin: 0;
+}
+
+/* Jak wygląda wizyta: trzy fazy księżyca, od sierpu do pełni */
+.wizyta h2::after {
+  background: var(--noc-przygaszony);
+}
+
+.kroki {
+  position: relative;
+  display: grid;
+  gap: 2.5rem;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* przerywana „orbita” łącząca księżyce */
+.kroki::before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  bottom: 2rem;
+  left: 2.25rem;
+  border-left: 1px dashed rgba(244, 238, 232, 0.3);
+}
+
+.krok {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  column-gap: 1.25rem;
+}
+
+.krok h3 {
+  margin: 0.55rem 0 0.4rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.krok p {
+  grid-column: 2;
+  margin: 0;
+  color: var(--noc-przygaszony);
+}
+
+.faza {
+  display: block;
+  grid-row: span 2;
+  position: relative;
+  width: 4.5rem;
+  height: 4.5rem;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--noc-tekst);
+  box-shadow: 0 0 2.5rem rgba(244, 238, 232, 0.2);
+  view-timeline: --faza block;
+}
+
+/* cień na tarczy; im dalej przesunięty, tym pełniejszy księżyc */
+.faza::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: #3d3029;
+  transform: translateX(var(--faza, 0%));
+}
+
+.faza--1 { --faza: 28%; }
+.faza--2 { --faza: 62%; }
+.faza--3 { --faza: 110%; }
+
+/* przy przewijaniu każdy księżyc „rośnie” od nowiu do swojej fazy */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .faza::after {
+      animation: faza linear both;
+      animation-timeline: --faza;
+      animation-range: entry 0% cover 50%;
+    }
+  }
+}
+
+@keyframes faza {
+  from {
+    transform: translateX(0);
+  }
+}
+
+/* cytat w „O nas” */
+.o-nas .cytat {
+  margin-bottom: 1.25rem;
+  font-family: var(--font-naglowki);
+  font-size: clamp(1.45rem, 4.6vw, 2rem);
+  line-height: 1.3;
+}
+
+@media (min-width: 48em) {
+  .hero {
+    padding-bottom: 7rem;
+  }
+
+  .hero::after {
+    height: 4.5rem;
+  }
+
+  .wybor__opcje {
+    max-width: 36rem;
+  }
+
+  .wybor__panel {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 3.5rem;
+  }
+
+  .wybor__panel .luk {
+    aspect-ratio: 4 / 5;
+  }
+
+  .kroki {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .kroki::before {
+    top: 2.25rem;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    border-left: 0;
+    border-top: 1px dashed rgba(244, 238, 232, 0.3);
+  }
+
+  .krok {
+    display: block;
+  }
+
+  .krok h3 {
+    margin-top: 1.25rem;
+  }
+}
+
+/* ---------- Podstrony: usługi, o nas, kontakt ---------- */
+
+/* duży sierp nad wezwaniem do rezerwacji */
+.ksiezyc--duzy {
+  display: block;
+  margin: 0 auto 1.25rem;
+  font-size: 3rem;
+}
+
+.o-nas .o-nas__od {
+  font-family: var(--font-naglowki);
+  font-style: italic;
+  color: var(--kolor-akcent-ciemny);
+}
+
+/* Kontakt */
+.kontakt__adres {
+  font-family: var(--font-naglowki);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  line-height: 1.3;
+}
+
+.kontakt__linki {
+  font-size: 1.1rem;
+}
+
+.kontakt__godziny {
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--promien);
+}
+
+.kontakt__godziny .hero__status {
+  margin: 0 0 1.25rem;
+}
+
+.kontakt__godziny .godziny th,
+.kontakt__godziny .godziny td {
+  padding: 0.7rem 0;
+  border-bottom-color: rgba(244, 238, 232, 0.2);
+}
+
+.kontakt__godziny .godziny td {
+  color: var(--noc-przygaszony);
+}
+
+.godziny tr.dzis th,
+.godziny tr.dzis td {
+  color: var(--noc-tekst);
+  font-weight: 700;
+}
+
+.godziny tr.dzis td::after {
+  content: "dziś";
+  margin-left: 0.6rem;
+  padding: 0.05rem 0.55rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.kontakt + .kontener .kontakt__zdjecie {
+  margin-top: 3rem;
+}
+
+@media (min-width: 48em) {
+  .cennik__kategoria {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 3.5rem;
+    align-items: start;
+    padding: 3.5rem 0;
+  }
+
+  .cennik__bok .luk {
+    aspect-ratio: 4 / 3;
+  }
+
+  .osoba {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 4rem;
+  }
+
+  /* co druga osoba ma portret po prawej */
+  .osoba:nth-child(even) .osoba__zdjecie {
+    order: 2;
+    justify-self: end;
+  }
+
+  .kontakt__godziny {
+    padding: 2.25rem 2rem;
+  }
+
+  .kontakt__zdjecie {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+@media (min-width: 60em) {
+  /* zdjęcie i nazwa kategorii zostają na miejscu, gdy przewijasz długi cennik */
+  .cennik__bok {
+    position: sticky;
+    top: 6rem;
+  }
+}
+
+/* na beżowym tle sekcji zespołu znaczniki dostają białe tło */
+.sekcja--tlo .znaczniki li {
+  background: var(--tlo-karty);
+}
+
+/* ---------- Rezerwacja ---------- */
+
+/* trzy kroki rezerwacji: małe księżyce na jasnym tle, bez animacji */
+.kroki--rezerwacja {
+  gap: 1.5rem;
+  margin: 0 0 3rem;
+}
+
+.kroki--rezerwacja::before {
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.75rem;
+  border-color: rgba(42, 33, 29, 0.25);
+}
+
+.kroki--rezerwacja .krok {
+  grid-template-columns: 3.5rem 1fr;
+}
+
+.kroki--rezerwacja .faza {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid var(--noc);
+  background: var(--kolor-glowny);
+  box-shadow: 0 0 0 0.4rem var(--tlo);
+}
+
+.kroki--rezerwacja .faza::after {
+  background: var(--noc);
+  animation: none;
+}
+
+.kroki--rezerwacja h2 {
+  margin: 0.35rem 0 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.kroki--rezerwacja h2::after {
+  display: none;
+}
+
+.kroki--rezerwacja .krok p {
+  color: var(--tekst-przygaszony);
+}
+
+.rezerwacja__uklad {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* widżet nie rozpycha kolumny na wąskim ekranie */
+  gap: 2.5rem;
+}
+
+.rezerwacja__bok {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-content: start;
+}
+
+.rezerwacja__karta .hero__status {
+  margin: 0 0 1rem;
+}
+
+/* ściąga: kto wykonuje jakie zabiegi (w widżecie wybiera się osobę) */
+.kto ul {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.kto li {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--linia);
+}
+
+.kto img {
+  flex: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 25%;
+}
+
+.kto p {
+  margin: 0;
+  color: var(--tekst-przygaszony);
+  line-height: 1.35;
+}
+
+.kto strong {
+  display: block;
+  color: var(--tekst);
+  font-family: var(--font-naglowki);
+  font-size: 1.1rem;
+}
+
+@media (min-width: 48em) {
+  .kroki--rezerwacja {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .kroki--rezerwacja::before {
+    top: 1.75rem;
+    left: 0;
+    right: 0;
+    bottom: auto;
+  }
+
+  .kroki--rezerwacja h2 {
+    margin-top: 1rem;
+  }
+
+  .zasady {
+    display: block;
+    columns: 2;
+    column-gap: 3rem;
+  }
+
+  .zasady li {
+    margin-bottom: 0.9rem;
+    break-inside: avoid;
+  }
+}
+
+@media (min-width: 60em) {
+  .rezerwacja__uklad {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .rezerwacja__bok {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .rezerwacja__bok .rezerwacja__przyciski {
+    flex-direction: column;
+  }
+}
+
+/* bardzo wąski telefon: przycisk z numerem mieści się w karcie */
+@media (max-width: 24.99em) {
+  .rezerwacja__karta {
+    padding: 1.5rem 1rem;
+  }
+
+  .rezerwacja__karta .przycisk {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+
+/* ---------- Dokumenty prawne: spis treści z boku, sierpy w listach ---------- */
+
+.dokument-uklad {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+}
+
+.spis {
+  padding: 1.25rem 1.25rem 0.75rem;
+  border-radius: var(--promien);
+  background: var(--tlo-sekcji);
+}
+
+.sekcja .spis h2 {
+  margin-bottom: 0.6rem;
+  font-size: 1.15rem;
+}
+
+.sekcja .spis h2::after {
+  display: none;
+}
+
+.spis ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.spis a {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.45rem 0;
+  border-top: 1px solid var(--linia);
+  color: var(--tekst);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.spis a:hover {
+  color: var(--kolor-akcent-ciemny);
+}
+
+.dokument__nr {
+  flex: none;
+  min-width: 1.4em;
+  color: var(--kolor-akcent-ciemny);
+  font-family: var(--font-naglowki);
+  font-variant-numeric: tabular-nums;
+}
+
+.dokument-tresc {
+  max-width: 44rem;
+}
+
+.dokument-tresc .uwaga-szablon {
+  margin-top: 0;
+}
+
+.dokument-tresc h2 {
+  margin: 2.75rem 0 0.9rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--linia);
+  font-size: clamp(1.35rem, 4.5vw, 1.7rem);
+  font-weight: 500;
+  scroll-margin-top: 1rem;
+}
+
+.sekcja .dokument-tresc h2::after {
+  display: none;
+}
+
+.dokument-tresc h2 .dokument__nr {
+  margin-right: 0.2em;
+}
+
+.dokument-tresc ul {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.dokument-tresc li {
+  position: relative;
+  margin-bottom: 0.5rem;
+  padding-left: 1.75rem;
+}
+
+.dokument-tresc li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 50%;
+  box-shadow: inset 0.27em -0.09em 0 0 var(--kolor-akcent-ciemny);
+  transform: rotate(-20deg);
+}
+
+.dokument-tresc__dalej {
+  margin-top: 3rem;
+}
+
+@media (min-width: 60em) {
+  .dokument-uklad {
+    grid-template-columns: 16rem minmax(0, 1fr);
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .spis {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .dokument-tresc h2 {
+    scroll-margin-top: 6rem;
+  }
+}
+
+/* ---------- Strona 404: nów na nocnym niebie ---------- */
+
+.zgubiona {
+  display: grid;
+  align-items: center;
+  min-height: 70vh;
+  padding: 3.5rem 0 4.5rem;
+}
+
+.zgubiona__uklad {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.zgubiona__ksiezyc {
+  position: relative;
+  width: 10rem;
+  margin-left: 1rem; /* miejsce na orbitę przy krawędzi ekranu */
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--noc-tekst);
+  /* orbita wokół tarczy */
+  box-shadow: 0 0 0 1rem var(--noc), 0 0 0 calc(1rem + 1px) rgba(244, 238, 232, 0.28);
+}
+
+/* cień zasłania prawie całą tarczę, zostaje cienki sierp */
+.zgubiona__ksiezyc::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: #3d3029;
+  transform: translateX(9%);
+  animation: sierp 2.6s cubic-bezier(0.3, 0.1, 0.2, 1) 0.3s backwards;
+}
+
+@keyframes sierp {
+  from {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zgubiona__ksiezyc::after {
+    animation: none;
+  }
+}
+
+.zgubiona h1 {
+  font-size: clamp(2.3rem, 9vw, 3.8rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  margin-bottom: 1rem;
+}
+
+.zgubiona__opis {
+  max-width: 34rem;
+  color: var(--noc-przygaszony);
+}
+
+.zgubiona__linki {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.zgubiona__linki a {
+  display: inline-block;
+  padding: 0.3rem 0;
+}
+
+@media (min-width: 48em) {
+  .zgubiona__uklad {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 5rem;
+  }
+
+  .zgubiona__ksiezyc {
+    width: 15rem;
+    margin-left: 1rem;
+  }
+}
+
+/* ciemna treść 404 i ciemna stopka: cienka linia między nimi */
+.zgubiona + .stopka {
+  border-top: 1px solid rgba(244, 238, 232, 0.15);
+}
+
+/* ---------- Telefon: kompozycja wyśrodkowana (cenniki, zasady i dokumenty zostają przy lewej) ---------- */
+@media (max-width: 47.99em) {
+  .hero__uklad,
+  .naglowek-strony .kontener,
+  .sekcja h2,
+  .sekcja__wstep,
+  .wezwanie,
+  .wybor__tresc,
+  .obok .o-nas,
+  .opinia,
+  .osoba__tresc,
+  .cennik__bok,
+  .rezerwacja__karta,
+  .kontakt > div,
+  .zgubiona__uklad,
+  .stopka .kontener {
+    text-align: center;
+  }
+
+  .hero__ksiezyc {
+    justify-self: center;
+    margin-right: 0;
+  }
+
+  .hero__opis,
+  .sekcja__wstep,
+  .naglowek-strony p,
+  .zgubiona__opis {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sekcja h2::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__przyciski,
+  .wybor__cena,
+  .wybor__osoba,
+  .wybor__akcje,
+  .znaczniki,
+  .social,
+  .stopka__linki,
+  .rezerwacja__przyciski,
+  .zgubiona__linki {
+    justify-content: center;
+  }
+
+  .wybor__osoba p {
+    text-align: left;
+  }
+
+  /* kroki wizyty: księżyc nad tekstem, bez pionowej linii */
+  .kroki::before {
+    display: none;
+  }
+
+  .krok,
+  .kroki--rezerwacja .krok {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .krok p {
+    max-width: 22rem;
+  }
+
+  .obok > .luk,
+  .osoba__zdjecie,
+  .zgubiona__ksiezyc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .godziny {
+    max-width: 22rem;
+    margin: 0 auto;
+  }
+
+  .kontakt__godziny .hero__status,
+  .rezerwacja__karta .hero__status {
+    justify-content: center;
+  }
+
+  .stopka__zrodla,
+  .stopka__demo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

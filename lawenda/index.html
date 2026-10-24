@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pracownia Włosa Lawenda – fryzjer Poznań</title>
+  <meta name="description" content="Mała pracownia fryzjerska w Poznaniu. Strzyżenie, koloryzacja i pielęgnacja w spokojnej atmosferze, bez pośpiechu.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://pracownia-lawenda.example/">
+  <meta name="theme-color" content="#6b5b95">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "Pracownia Włosa Lawenda",
+    "description": "Mała pracownia fryzjerska w Poznaniu. Strzyżenie, koloryzacja i pielęgnacja w spokojnej atmosferze, bez pośpiechu.",
+    "url": "https://pracownia-lawenda.example/",
+    "logo": "https://pracownia-lawenda.example/assets/logo.svg",
+    "image": "https://pracownia-lawenda.example/assets/galeria-1.svg",
+    "telephone": "+48 000 000 000",
+    "email": "kontakt@pracownia-lawenda.example",
+    "foundingDate": "2019",
+    "priceRange": "40–480 zł",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ul. Przykładowa 7/3",
+      "postalCode": "60-000",
+      "addressLocality": "Poznań",
+      "addressCountry": "PL"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Wednesday", "Friday"],
+        "opens": "10:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Thursday"],
+        "opens": "10:00",
+        "closes": "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "15:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/pracownia.lawenda.test/",
+      "https://www.facebook.com/pracownialawenda.test"
+    ]
+  }
+  </script>
+  <style>
+    .demo-rezerwacja { display: grid; gap: 14px; }
+    .demo-rezerwacja p { margin: 0; }
+    .demo-rezerwacja__kroki { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .demo-rezerwacja figure { margin: 0; display: grid; gap: 6px; }
+    .demo-rezerwacja img { width: 100%; height: auto; border-radius: 12px; border: 1px solid rgba(0,0,0,.12); background: #fff; }
+    .demo-rezerwacja figcaption { font-size: .875rem; opacity: .8; }
+    @media (max-width: 640px) { .demo-rezerwacja__kroki { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div style="position:relative;z-index:9999;background:#0b1220;color:#e8eef7;font:500 14px/1.45 system-ui,sans-serif;text-align:center;padding:10px 16px">Projekt portfolio: <strong>fikcyjny salon</strong>, dane i zdjęcia są przykładowe. Autor: <a href="https://szymonlesniak244.github.io" style="color:#2de2c4">Szymon Leśniak</a> · <a href="../" style="color:#2de2c4">o projekcie</a></div>
+  <a class="skip-link" href="#tresc">Przejdź do treści</a>
+
+  <header class="naglowek">
+    <div class="kontener">
+      <div class="naglowek__gora">
+        <a class="naglowek__logo" href="index.html">
+          <img src="assets/logo.svg" width="180" height="48" alt="Pracownia Włosa Lawenda – strona główna">
+        </a>
+        <a class="przycisk przycisk--maly" href="#rezerwacja">Umów wizytę</a>
+        <details class="menu-mobilne">
+          <summary aria-label="Menu"><span class="ikona-menu" aria-hidden="true"></span></summary>
+          <nav aria-label="Menu główne">
+            <ul>
+              <li><a href="#uslugi">Usługi i cennik</a></li>
+              <li><a href="#zespol">Zespół</a></li>
+              <li><a href="#o-nas">O nas</a></li>
+              <li><a href="#galeria">Galeria</a></li>
+              <li><a href="#opinie">Opinie</a></li>
+              <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+          </nav>
+        </details>
+      </div>
+      <nav class="menu" aria-label="Menu główne">
+        <ul>
+          <li><a href="#uslugi">Usługi i cennik</a></li>
+          <li><a href="#zespol">Zespół</a></li>
+          <li><a href="#o-nas">O nas</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#opinie">Opinie</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="tresc">
+    <!-- HERO: zdjęcie w kształcie łodyżki, złote pasmo rysuje się przy wczytaniu -->
+    <section class="hero" aria-labelledby="tytul">
+      <div class="kontener hero__uklad">
+        <div class="hero__tekst">
+          <h1 id="tytul">Pracownia Włosa Lawenda</h1>
+          <p class="hero__slogan">Włosy, które lubią Twój styl</p>
+          <p class="hero__opis">Mała pracownia fryzjerska w Poznaniu. Strzyżenie, koloryzacja i pielęgnacja w spokojnej atmosferze, bez pośpiechu.</p>
+          <div class="hero__przyciski">
+            <a class="przycisk" href="#rezerwacja">Umów wizytę</a>
+            <a class="przycisk przycisk--obrys" href="#uslugi">Zobacz cennik</a>
+          </div>
+          <p class="hero__miejsce">Fryzjer na poznańskich Jeżycach, od 2019 roku</p>
+        </div>
+        <div class="hero__zdjecie">
+          <img src="assets/hero-wlosy.jpg" srcset="assets/hero-wlosy-960.jpg 933w, assets/hero-wlosy.jpg 1866w" sizes="(min-width: 48em) 22rem, 13rem" width="1866" height="1920" alt="Długie, falowane włosy w odcieniach brązu i miodu" fetchpriority="high">
+          <svg class="pasmo pasmo--hero" viewBox="0 0 160 110" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path class="pasmo__linia" pathLength="1" d="M2 96 C 22 94, 30 78, 46 72 S 96 64, 124 54 S 158 30, 136 19 S 86 12, 70 30"/>
+            <path class="pasmo__linia pasmo__linia--cienka" pathLength="1" d="M6 102 C 26 99, 36 84, 50 79 S 100 70, 128 60 S 156 40, 142 26"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- USŁUGI I CENNIK -->
+    <section class="sekcja" id="uslugi" aria-labelledby="uslugi-tytul">
+      <div class="kontener">
+        <h2 id="uslugi-tytul">Usługi i cennik</h2>
+        <p class="sekcja__wstep">Strzyżenie damskie i męskie, koloryzacja, balayage i pielęgnacja włosów w naszej pracowni na poznańskich Jeżycach. Przy cenie „od” podana kwota jest ceną najniższą.</p>
+
+        <div class="cennik">
+          <section class="cennik__kategoria" aria-labelledby="kat-strzyzenie">
+            <h3 id="kat-strzyzenie">Strzyżenie</h3>
+            <ul class="cennik__lista">
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Strzyżenie damskie</span><span class="cennik__cena">120 zł</span></div>
+                <span class="cennik__czas">1 h</span>
+                <p class="cennik__opis">Mycie, strzyżenie i modelowanie.</p>
+              </li>
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Strzyżenie męskie</span><span class="cennik__cena">70 zł</span></div>
+                <span class="cennik__czas">40 min</span>
+              </li>
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Strzyżenie dziecięce (do 12 lat)</span><span class="cennik__cena">50 zł</span></div>
+                <span class="cennik__czas">30 min</span>
+              </li>
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Broda</span><span class="cennik__cena">40 zł</span></div>
+                <span class="cennik__czas">20 min</span>
+              </li>
+            </ul>
+          </section>
+
+          <section class="cennik__kategoria" aria-labelledby="kat-koloryzacja">
+            <h3 id="kat-koloryzacja">Koloryzacja</h3>
+            <p class="cennik__uwaga">Przy koloryzacji pobieramy zadatek 30 zł.</p>
+            <ul class="cennik__lista">
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Koloryzacja jednolita</span><span class="cennik__cena">od 220 zł</span></div>
+                <span class="cennik__czas">2 h</span>
+                <p class="cennik__opis">Cena zależy od długości i gęstości włosów.</p>
+              </li>
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Odrost</span><span class="cennik__cena">180 zł</span></div>
+                <span class="cennik__czas">1 h 30 min</span>
+              </li>
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Balayage</span><span class="cennik__cena">od 480 zł</span></div>
+                <span class="cennik__czas">3 h</span>
+                <p class="cennik__opis">Rozjaśnianie z efektem naturalnego przejścia.</p>
+              </li>
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Tonowanie</span><span class="cennik__cena">120 zł</span></div>
+                <span class="cennik__czas">45 min</span>
+              </li>
+            </ul>
+          </section>
+
+          <section class="cennik__kategoria" aria-labelledby="kat-stylizacja">
+            <h3 id="kat-stylizacja">Stylizacja</h3>
+            <ul class="cennik__lista">
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Modelowanie</span><span class="cennik__cena">90 zł</span></div>
+                <span class="cennik__czas">45 min</span>
+              </li>
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Upięcie okolicznościowe</span><span class="cennik__cena">od 160 zł</span></div>
+                <span class="cennik__czas">1 h</span>
+              </li>
+            </ul>
+          </section>
+
+          <section class="cennik__kategoria" aria-labelledby="kat-pielegnacja">
+            <h3 id="kat-pielegnacja">Pielęgnacja</h3>
+            <ul class="cennik__lista">
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Zabieg regenerujący</span><span class="cennik__cena">110 zł</span></div>
+                <span class="cennik__czas">45 min</span>
+              </li>
+              <li class="cennik__pozycja">
+                <div class="cennik__wiersz"><span class="cennik__nazwa">Keratynowe prostowanie</span><span class="cennik__cena">od 350 zł</span></div>
+                <span class="cennik__czas">2 h 30 min</span>
+                <p class="cennik__opis">Efekt utrzymuje się kilka miesięcy.</p>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZESPÓŁ: wybór „z czym przychodzisz” podświetla właściwą osobę (radio + CSS, działa bez JS) -->
+    <section class="sekcja sekcja--tlo" id="zespol" aria-labelledby="zespol-tytul">
+      <div class="kontener dobor">
+        <h2 id="zespol-tytul">Zespół</h2>
+        <p class="sekcja__wstep">Pracujemy w trójkę. Zobacz, kto czym się zajmuje, i wybierz osobę, która najlepiej pasuje do Twojej wizyty.</p>
+        <fieldset class="dobor__opcje">
+          <legend>Z czym przychodzisz?</legend>
+          <label class="dobor__opcja"><input type="radio" name="dobor" value="wszyscy" checked><span>Pokaż wszystkich</span></label>
+          <label class="dobor__opcja"><input type="radio" name="dobor" value="damskie"><span>Strzyżenie damskie</span></label>
+          <label class="dobor__opcja"><input type="radio" name="dobor" value="kolor"><span>Koloryzacja, balayage</span></label>
+          <label class="dobor__opcja"><input type="radio" name="dobor" value="meskie"><span>Strzyżenie męskie, broda</span></label>
+          <label class="dobor__opcja"><input type="radio" name="dobor" value="dziecko"><span>Fryzura dla dziecka</span></label>
+          <label class="dobor__opcja"><input type="radio" name="dobor" value="okazja"><span>Upięcie, modelowanie</span></label>
+        </fieldset>
+        <ul class="zespol">
+          <li class="osoba" data-dla="damskie kolor">
+            <img class="osoba__zdjecie" src="assets/zespol-marta.jpg" width="533" height="800" loading="lazy" alt="Marta Wrońska, właścicielka i stylistka">
+            <div class="osoba__tresc">
+              <h3>Marta Wrońska</h3>
+              <p class="osoba__rola">Właścicielka, stylistka</p>
+              <p>Koloryzacja i strzyżenie damskie. Fryzjerką jest od 12 lat.</p>
+              <p class="osoba__uslugi-tytul">Usługi:</p>
+              <ul class="znaczniki">
+                <li>Strzyżenie damskie</li>
+                <li>Koloryzacja jednolita</li>
+                <li>Balayage</li>
+              </ul>
+              <p class="osoba__umow"><a href="#rezerwacja">Umów się do Marty</a></p>
+            </div>
+          </li>
+          <li class="osoba" data-dla="meskie">
+            <img class="osoba__zdjecie" src="assets/zespol-pawel.jpg" width="640" height="800" loading="lazy" alt="Paweł Lis, barber">
+            <div class="osoba__tresc">
+              <h3>Paweł Lis</h3>
+              <p class="osoba__rola">Barber</p>
+              <p>Strzyżenie męskie i broda.</p>
+              <p class="osoba__uslugi-tytul">Usługi:</p>
+              <ul class="znaczniki">
+                <li>Strzyżenie męskie</li>
+                <li>Broda</li>
+              </ul>
+              <p class="osoba__umow"><a href="#rezerwacja">Umów się do Pawła</a></p>
+            </div>
+          </li>
+          <li class="osoba" data-dla="dziecko okazja">
+            <img class="osoba__zdjecie" src="assets/zespol-karolina.jpg" width="533" height="800" loading="lazy" alt="Karolina Duda, stylistka">
+            <div class="osoba__tresc">
+              <h3>Karolina Duda</h3>
+              <p class="osoba__rola">Stylistka</p>
+              <p>Fryzury dziecięce, upięcia i stylizacje na wyjątkowe okazje.</p>
+              <p class="osoba__uslugi-tytul">Usługi:</p>
+              <ul class="znaczniki">
+                <li>Strzyżenie dziecięce (do 12 lat)</li>
+                <li>Upięcie okolicznościowe</li>
+                <li>Modelowanie</li>
+              </ul>
+              <p class="osoba__umow"><a href="#rezerwacja">Umów się do Karoliny</a></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- O NAS -->
+    <section class="sekcja" id="o-nas" aria-labelledby="o-nas-tytul">
+      <div class="kontener o-nas">
+        <img class="o-nas__zdjecie" src="assets/o-nas-modelowanie.jpg" width="1200" height="801" loading="lazy" alt="Stylistka modeluje włosy klientki suszarką">
+        <div>
+          <h2 id="o-nas-tytul">O nas</h2>
+          <figure class="cytat">
+            <blockquote><p>Chciałam robić fryzury w miejscu, gdzie nikt się nie spieszy.</p></blockquote>
+            <figcaption>Marta Wrońska, właścicielka</figcaption>
+          </figure>
+          <p>Pracownię Włosa Lawenda założyłam w 2019 roku. Pracujemy w trójkę. Każda wizyta zaczyna się od rozmowy o tym, jak na co dzień nosisz włosy i ile czasu chcesz na nie poświęcać. Stawiamy na koloryzację, która dobrze rośnie, i cięcia, które łatwo ułożyć w domu.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- JAK WYGLĄDA WIZYTA: złote pasmo rysuje się przy przewijaniu -->
+    <section class="sekcja wizyta" aria-labelledby="wizyta-tytul">
+      <div class="kontener">
+        <h2 id="wizyta-tytul">Jak wygląda wizyta</h2>
+        <svg class="pasmo pasmo--wizyta" viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <path class="pasmo__linia" pathLength="1" d="M0 52 C 90 10, 180 10, 270 40 S 450 78, 540 44 S 720 6, 820 30 S 950 64, 1000 34"/>
+          <path class="pasmo__linia pasmo__linia--cienka" pathLength="1" d="M0 60 C 100 22, 190 22, 280 50 S 460 84, 550 52 S 730 16, 830 40 S 955 70, 1000 46"/>
+        </svg>
+        <ol class="kroki">
+          <li class="krok">
+            <h3><span class="krok__nr" aria-hidden="true">1</span> Rozmowa</h3>
+            <p>Każda wizyta zaczyna się od rozmowy o tym, jak na co dzień nosisz włosy i ile czasu chcesz na nie poświęcać.</p>
+          </li>
+          <li class="krok">
+            <h3><span class="krok__nr" aria-hidden="true">2</span> Cięcie albo kolor</h3>
+            <p>Bez pośpiechu. Stawiamy na koloryzację, która dobrze rośnie.</p>
+          </li>
+          <li class="krok">
+            <h3><span class="krok__nr" aria-hidden="true">3</span> Układanie w domu</h3>
+            <p>Cięcie ma się łatwo układać także bez nas, w domu.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="sekcja sekcja--tlo" id="galeria" aria-labelledby="galeria-tytul">
+      <div class="kontener">
+        <h2 id="galeria-tytul">Galeria</h2>
+        <ul class="galeria">
+          <li class="galeria__szeroka"><img src="assets/galeria-wnetrze.jpg" width="1200" height="800" loading="lazy" alt="Wnętrze salonu z fotelami fryzjerskimi i lustrami (zdjęcie poglądowe)"></li>
+          <li class="galeria__wysoka"><img src="assets/galeria-balayage.jpg" width="800" height="1200" loading="lazy" alt="Długie falowane włosy po koloryzacji balayage (zdjęcie poglądowe)"></li>
+          <li><img src="assets/galeria-upiecie.jpg" width="800" height="1200" loading="lazy" alt="Upięcie okolicznościowe z warkoczem i ozdobą we włosach (zdjęcie poglądowe)"></li>
+          <li><img src="assets/galeria-broda.jpg" width="800" height="1200" loading="lazy" alt="Barber przycina brodę klienta nożyczkami (zdjęcie poglądowe)"></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OPINIE -->
+    <section class="sekcja" id="opinie" aria-labelledby="opinie-tytul">
+      <div class="kontener">
+        <h2 id="opinie-tytul">Opinie</h2>
+        <ul class="opinie">
+          <li>
+            <figure class="opinia">
+              <blockquote><p>Pierwszy raz od lat nie musiałam poprawiać koloru po kilku tygodniach. Polecam!</p></blockquote>
+              <figcaption>Anna K. (opinia testowa), Google</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="opinia">
+              <blockquote><p>Spokojna atmosfera i dokładnie takie cięcie, o jakie prosiłem.</p></blockquote>
+              <figcaption>Tomek (opinia testowa), Google</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="opinia">
+              <blockquote><p>Córka zwykle boi się fryzjera, tutaj wyszła uśmiechnięta.</p></blockquote>
+              <figcaption>Ewa M. (opinia testowa), Facebook</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- REZERWACJA -->
+    <section class="sekcja sekcja--tlo" id="rezerwacja" aria-labelledby="rezerwacja-tytul">
+      <div class="kontener">
+        <h2 id="rezerwacja-tytul">Umów wizytę</h2>
+        <p class="sekcja__wstep">Wybierz usługę, osobę i wolny termin. Potwierdzenie przyjdzie na Twój e-mail.</p>
+        <div class="rezerwacja__uklad">
+          <div>
+            <div class="rezerwacja__widget demo-rezerwacja" id="widget-rezerwacji"><p><strong>Wersja demonstracyjna.</strong> Na działającej stronie w tym miejscu jest kalendarz rezerwacji SimplyBook. Poniżej zrzuty z prawdziwego, działającego procesu rezerwacji (testowe konto, rezerwacja niewysłana).</p><div class="demo-rezerwacja__kroki"><figure><img src="../rezerwacja-demo/1-kategoria.jpg" alt="Krok 1: wybór kategorii" width="1280" height="1000" loading="lazy" /><figcaption>Krok 1: wybór kategorii</figcaption></figure><figure><img src="../rezerwacja-demo/2-usluga.jpg" alt="Krok 2: usługa z ceną i czasem" width="1280" height="1000" loading="lazy" /><figcaption>Krok 2: usługa z ceną i czasem</figcaption></figure><figure><img src="../rezerwacja-demo/3-termin.jpg" alt="Krok 3: kalendarz z wolnymi godzinami" width="1280" height="1000" loading="lazy" /><figcaption>Krok 3: kalendarz z wolnymi godzinami</figcaption></figure><figure><img src="../rezerwacja-demo/4-potwierdzenie.jpg" alt="Krok 4: podsumowanie i dane klientki" width="1280" height="1000" loading="lazy" /><figcaption>Krok 4: podsumowanie i dane klientki</figcaption></figure></div></div>
+          </div>
+          <div class="rezerwacja__bok">
+            <div class="rezerwacja__karta">
+              <h3>Wolisz zadzwonić?</h3>
+              <!-- status otwarcia wylicza skrypt na dole strony; bez JS jest ukryty -->
+              <p class="status-otwarcia" data-godziny='{"1":["10:00","19:00"],"2":["10:00","20:00"],"3":["10:00","19:00"],"4":["10:00","20:00"],"5":["10:00","19:00"],"6":["09:00","15:00"]}' hidden></p>
+              <p>Zadzwoń albo napisz. Razem dobierzemy termin i usługę.</p>
+              <div class="rezerwacja__przyciski">
+                <a class="przycisk przycisk--jasny" href="tel:+48000000000">Zadzwoń: +48 000 000 000</a>
+                <a class="przycisk przycisk--obrys-jasny" href="mailto:kontakt@pracownia-lawenda.example">Napisz e-mail</a>
+              </div>
+            </div>
+            <div class="rezerwacja__zasady">
+              <h3>Dobrze wiedzieć</h3>
+              <ul class="zasady">
+                <li>Wizytę online umówisz najpóźniej 2 godziny przed terminem.</li>
+                <li>Przypomnienie wyślemy e-mailem 24 godziny i 2 godziny przed wizytą.</li>
+                <li>Wizytę można odwołać lub przełożyć najpóźniej 24 godziny przed terminem.</li>
+                <li>Przy usługach z kategorii Koloryzacja pobieramy zadatek 30 zł. Zadatek jest zwracany przy odwołaniu wizyty co najmniej 24 godziny wcześniej.</li>
+                <li>Spóźnienie powyżej 15 minut może skrócić usługę albo wymagać zmiany terminu.</li>
+              </ul>
+              <p>Szczegóły znajdziesz w <a href="regulamin-rezerwacji.html">regulaminie rezerwacji</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="sekcja" id="kontakt" aria-labelledby="kontakt-tytul">
+      <div class="kontener">
+        <h2 id="kontakt-tytul">Kontakt i dojazd</h2>
+        <div class="kontakt">
+          <div>
+            <h3>Adres</h3>
+            <address class="kontakt__adres">
+              Pracownia Włosa Lawenda<br>
+              ul. Przykładowa 7/3<br>
+              60-000 Poznań
+            </address>
+            <p>Wejście od podwórka, brama obok apteki. Przystanek tramwajowy 3 minuty pieszo.</p>
+            <p><a class="przycisk przycisk--obrys" href="https://www.google.com/maps/search/?api=1&amp;query=ul.%20Przyk%C5%82adowa%207%2F3%2C%2060-000%20Pozna%C5%84" rel="noopener">Zobacz na mapie</a></p>
+
+            <h3>Telefon i e-mail</h3>
+            <p class="kontakt__linki">
+              <a href="tel:+48000000000">+48 000 000 000</a><br>
+              <a href="mailto:kontakt@pracownia-lawenda.example">kontakt@pracownia-lawenda.example</a>
+            </p>
+
+            <h3>Znajdziesz nas też tutaj</h3>
+            <ul class="social">
+              <li><a href="https://www.instagram.com/pracownia.lawenda.test/" rel="noopener">Instagram</a></li>
+              <li><a href="https://www.facebook.com/pracownialawenda.test" rel="noopener">Facebook</a></li>
+            </ul>
+          </div>
+          <div class="kontakt__godziny">
+            <h3>Godziny otwarcia</h3>
+            <p class="status-otwarcia" data-godziny='{"1":["10:00","19:00"],"2":["10:00","20:00"],"3":["10:00","19:00"],"4":["10:00","20:00"],"5":["10:00","19:00"],"6":["09:00","15:00"]}' hidden></p>
+            <table class="godziny">
+              <tbody>
+                <tr data-dni="1 3 5"><th scope="row">Pn, Śr, Pt</th><td>10:00–19:00</td></tr>
+                <tr data-dni="2 4"><th scope="row">Wt, Cz</th><td>10:00–20:00</td></tr>
+                <tr data-dni="6"><th scope="row">Sb</th><td>09:00–15:00</td></tr>
+                <tr data-dni="0"><th scope="row">Nd</th><td>nieczynne</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="stopka">
+    <div class="kontener">
+      <p>
+        <strong>Pracownia Włosa Lawenda</strong><br>
+        Marta Wrońska, Pracownia Włosa Lawenda · ul. Przykładowa 7/3, 60-000 Poznań · NIP 0000000000
+      </p>
+      <ul class="stopka__linki">
+        <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+        <li><a href="regulamin-rezerwacji.html">Regulamin rezerwacji</a></li>
+      </ul>
+      <p class="stopka__zrodla">Zdjęcia poglądowe z Unsplash, nie pochodzą z salonu.</p>
+      <p class="stopka__demo">Strona demonstracyjna</p>
+    </div>
+  </footer>
+
+  <div class="pasek-rezerwacji">
+    <a class="przycisk" href="#rezerwacja">Umów wizytę</a>
+    <a class="przycisk przycisk--obrys" href="tel:+48000000000">Zadzwoń</a>
+  </div>
+  <script>
+    // Menu na telefonie działa bez JS; ten skrypt tylko zamyka je po kliknięciu linku i klawiszem Esc.
+    var menu = document.querySelector(".menu-mobilne");
+    if (menu) {
+      menu.addEventListener("click", function (e) {
+        if (e.target.closest("a")) menu.open = false;
+      });
+      menu.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && menu.open) {
+          menu.open = false;
+          menu.querySelector("summary").focus();
+        }
+      });
+    }
+
+    // „Teraz otwarte / zamknięte” i dzisiejszy dzień w tabeli godzin, według czasu w Polsce. Bez JS napisy są ukryte.
+    try {
+      var teraz = new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Warsaw" }));
+      var dzien = teraz.getDay();
+      var minuty = teraz.getHours() * 60 + teraz.getMinutes();
+      var naMinuty = function (t) { var p = t.split(":"); return p[0] * 60 + Number(p[1]); };
+      var nazwy = ["w niedzielę", "w poniedziałek", "we wtorek", "w środę", "w czwartek", "w piątek", "w sobotę"];
+      document.querySelectorAll(".status-otwarcia").forEach(function (el) {
+        var godziny = JSON.parse(el.dataset.godziny);
+        var dzis = godziny[dzien];
+        var tekst = "";
+        if (dzis && minuty >= naMinuty(dzis[0]) && minuty < naMinuty(dzis[1])) {
+          tekst = "Teraz otwarte, do " + dzis[1];
+          el.dataset.stan = "otwarte";
+        } else {
+          for (var i = 0; i < 8; i++) {
+            var d = (dzien + i) % 7, h = godziny[d];
+            if (!h || (i === 0 && minuty >= naMinuty(h[0]))) continue;
+            tekst = "Teraz zamknięte, otwieramy " + (i === 0 ? "dziś" : i === 1 ? "jutro" : nazwy[d]) + " o " + h[0];
+            break;
+          }
+          el.dataset.stan = "zamkniete";
+        }
+        if (tekst) {
+          el.textContent = tekst;
+          el.hidden = false;
+        }
+      });
+      var wiersz = document.querySelector(".godziny tr[data-dni~=\"" + dzien + "\"]");
+      if (wiersz) wiersz.classList.add("dzis");
+    } catch (e) {}
+  </script>
+</body>
+</html>

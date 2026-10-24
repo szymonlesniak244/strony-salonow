@@ -1,0 +1,3 @@
+# Tryb testowy: strona demonstracyjna, nie indeksować
+User-agent: *
+Disallow: /

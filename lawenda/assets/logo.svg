@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" width="240" height="64" role="img" aria-label="Pracownia Włosa Lawenda">
+  <!-- Logo zastępcze (placeholder) do strony testowej: gałązka lawendy i nazwa. Do wymiany na logo od salonu. -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M20 60 C 21 44, 24 26, 30 6" stroke="#54477a" stroke-width="2"/>
+    <path d="M23 40 C 16 36, 12 30, 11 24" stroke="#c9a96e" stroke-width="1.5"/>
+  </g>
+  <g fill="#6b5b95">
+    <ellipse cx="30" cy="7" rx="3" ry="5" transform="rotate(18 30 7)"/>
+    <ellipse cx="26" cy="13" rx="3" ry="5" transform="rotate(-28 26 13)"/>
+    <ellipse cx="32" cy="16" rx="3" ry="5" transform="rotate(30 32 16)"/>
+    <ellipse cx="25" cy="22" rx="3" ry="5" transform="rotate(-30 25 22)"/>
+    <ellipse cx="30.5" cy="25" rx="3" ry="5" transform="rotate(28 30.5 25)"/>
+  </g>
+  <g fill="#9d8fc4">
+    <ellipse cx="23.5" cy="31" rx="2.6" ry="4.4" transform="rotate(-30 23.5 31)"/>
+    <ellipse cx="28.5" cy="33" rx="2.6" ry="4.4" transform="rotate(28 28.5 33)"/>
+  </g>
+  <text x="46" y="24" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-style="italic" fill="#54477a">Pracownia Włosa</text>
+  <text x="45" y="52" font-family="Georgia, 'Times New Roman', serif" font-size="29" fill="#2b2438">Lawenda</text>
+</svg>

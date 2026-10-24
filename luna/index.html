@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pracownia Luna – salon kosmetyczny Kraków</title>
+  <meta name="description" content="Kameralny salon kosmetyczny w Krakowie: pielęgnacja twarzy, stylizacja brwi i rzęs oraz depilacja woskiem. Spokojna atmosfera i indywidualne podejście.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://szymonlesniak244.github.io/strony-salonow/luna/">
+  <meta name="theme-color" content="#f4eee8">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "Pracownia Luna",
+    "description": "Kameralny salon kosmetyczny w Krakowie: pielęgnacja twarzy, stylizacja brwi i rzęs oraz depilacja woskiem.",
+    "url": "https://szymonlesniak244.github.io/strony-salonow/luna/",
+    "telephone": "+48 000 000 000",
+    "email": "kontakt@pracownia-luna.example",
+    "foundingDate": "2022",
+    "priceRange": "25–190 zł",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ul. Przykładowa 12",
+      "postalCode": "30-001",
+      "addressLocality": "Kraków",
+      "addressCountry": "PL"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday"],
+        "opens": "10:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Wednesday",
+        "opens": "12:00",
+        "closes": "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "14:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/pracownia.luna.test/"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div style="position:relative;z-index:9999;background:#0b1220;color:#e8eef7;font:500 14px/1.45 system-ui,sans-serif;text-align:center;padding:10px 16px">Projekt portfolio: <strong>fikcyjny salon</strong>, dane i zdjęcia są przykładowe. Autor: <a href="https://szymonlesniak244.github.io" style="color:#2de2c4">Szymon Leśniak</a> · <a href="../" style="color:#2de2c4">o projekcie</a></div>
+  <a class="skip-link" href="#tresc">Przejdź do treści</a>
+
+  <header class="naglowek">
+    <div class="kontener">
+      <div class="naglowek__gora">
+        <a class="naglowek__logo" href="index.html" aria-label="Pracownia Luna – strona główna"><span class="ksiezyc" aria-hidden="true"></span>Pracownia Luna</a>
+        <a class="przycisk przycisk--maly" href="rezerwacja.html">Umów wizytę</a>
+        <details class="menu-mobilne">
+          <summary aria-label="Menu"><span class="ikona-menu" aria-hidden="true"></span></summary>
+          <nav aria-label="Menu główne">
+            <ul>
+              <li><a href="index.html" aria-current="page">Strona główna</a></li>
+              <li><a href="uslugi.html">Usługi i cennik</a></li>
+              <li><a href="o-nas.html">O nas i zespół</a></li>
+              <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+          </nav>
+        </details>
+      </div>
+      <nav class="menu" aria-label="Menu główne">
+        <ul>
+          <li><a href="index.html" aria-current="page">Strona główna</a></li>
+          <li><a href="uslugi.html">Usługi i cennik</a></li>
+          <li><a href="o-nas.html">O nas i zespół</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="tresc">
+    <!-- HERO -->
+    <section class="hero ciemne" aria-labelledby="tytul">
+      <div class="kontener hero__uklad">
+        <div>
+          <h1 id="tytul">Pracownia Luna</h1>
+          <p class="hero__slogan">Chwila dla Ciebie, pielęgnacja z uważnością.</p>
+          <p class="hero__opis">Pracownia Luna to kameralny salon kosmetyczny w Krakowie. Oferujemy pielęgnację twarzy, stylizację brwi i rzęs oraz depilację woskiem. Dbamy o komfort, dokładność i indywidualne podejście do każdej wizyty.</p>
+          <div class="hero__przyciski">
+            <a class="przycisk" href="rezerwacja.html">Umów wizytę</a>
+            <a class="przycisk przycisk--obrys" href="uslugi.html">Zobacz cennik</a>
+          </div>
+          <!-- status otwarcia wylicza skrypt na dole strony z godzin w data-godziny (te same co w briefie); bez JS zostaje ukryty -->
+          <p class="hero__status" id="status-otwarcia" data-godziny='{"1":["10:00","18:00"],"2":["10:00","18:00"],"3":["12:00","20:00"],"4":["10:00","18:00"],"5":["10:00","18:00"],"6":["09:00","14:00"]}' hidden></p>
+          <p class="hero__miejsce">Salon kosmetyczny w Krakowie, na Krowodrzy</p>
+        </div>
+        <div class="hero__ksiezyc">
+          <div class="hero__tarcza">
+            <img src="assets/hero-maska.jpg" srcset="assets/hero-maska-960.jpg 640w, assets/hero-maska.jpg 1280w" sizes="(min-width: 48em) 28rem, 15rem" width="1280" height="1920" alt="Klientka z maską pielęgnacyjną na twarzy podczas zabiegu" fetchpriority="high">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WYRÓŻNIONE USŁUGI: wybór kategorii (radio + CSS, działa bez JS) -->
+    <section class="sekcja" aria-labelledby="uslugi-tytul">
+      <div class="kontener">
+        <h2 id="uslugi-tytul">Z czym do nas przychodzisz?</h2>
+        <p class="sekcja__wstep">Wybierz, czym chcesz się zająć. Pokażemy zabieg, od którego warto zacząć, i osobę, która go wykona.</p>
+        <div class="wybor">
+          <fieldset class="wybor__opcje">
+            <legend class="sr-only">Rodzaj zabiegu</legend>
+            <label class="wybor__opcja">
+              <input type="radio" name="wybor" value="twarz" checked>
+              <img src="assets/twarz.jpg" width="1200" height="800" loading="lazy" alt="">
+              <span>Skóra twarzy</span>
+            </label>
+            <label class="wybor__opcja">
+              <input type="radio" name="wybor" value="brwi">
+              <img src="assets/brwi.jpg" width="1200" height="900" loading="lazy" alt="">
+              <span>Brwi</span>
+            </label>
+            <label class="wybor__opcja">
+              <input type="radio" name="wybor" value="rzesy">
+              <img src="assets/rzesy.jpg" width="1200" height="800" loading="lazy" alt="">
+              <span>Rzęsy</span>
+            </label>
+            <label class="wybor__opcja">
+              <input type="radio" name="wybor" value="wosk">
+              <img src="assets/wosk.jpg" width="667" height="1200" loading="lazy" alt="">
+              <span>Depilacja</span>
+            </label>
+          </fieldset>
+
+          <div class="wybor__panele">
+            <article class="wybor__panel" data-kategoria="twarz">
+              <img class="luk" src="assets/twarz.jpg" width="1200" height="800" loading="lazy" alt="Kosmetolożka nakłada pędzlem maskę na twarz klientki">
+              <div class="wybor__tresc">
+                <p class="wybor__kategoria">Pielęgnacja twarzy</p>
+                <h3>Oczyszczanie manualne twarzy</h3>
+                <p class="wybor__cena"><strong>od 180 zł</strong><span>1 h 15 min</span></p>
+                <p class="wybor__opis">Cena zależy od stanu skóry i zakresu oczyszczania.</p>
+                <p class="wybor__inne">Także: konsultacja kosmetologiczna, peeling kawitacyjny z maską, zabieg nawilżający.</p>
+                <div class="wybor__osoba">
+                  <img src="assets/zespol-marta.jpg" width="636" height="800" loading="lazy" alt="">
+                  <p>Zajmie się Tobą <strong>Marta</strong>, kosmetolożka i właścicielka.</p>
+                </div>
+                <p class="wybor__akcje"><a class="przycisk" href="rezerwacja.html">Umów wizytę</a> <a href="uslugi.html#kat-twarz">Cennik zabiegów na twarz</a></p>
+              </div>
+            </article>
+            <article class="wybor__panel" data-kategoria="brwi">
+              <img class="luk" src="assets/brwi.jpg" width="1200" height="900" loading="lazy" alt="Stylistka w rękawiczkach wykonuje zabieg na brwiach klientki">
+              <div class="wybor__tresc">
+                <p class="wybor__kategoria">Stylizacja brwi</p>
+                <h3>Laminacja brwi</h3>
+                <p class="wybor__cena"><strong>110 zł</strong><span>50 min</span></p>
+                <p class="wybor__inne">Także: regulacja brwi, regulacja i farbowanie brwi.</p>
+                <div class="wybor__osoba">
+                  <img src="assets/zespol-julia.jpg" width="533" height="800" loading="lazy" alt="">
+                  <p>Zajmie się Tobą <strong>Julia</strong>, stylistka brwi i rzęs.</p>
+                </div>
+                <p class="wybor__akcje"><a class="przycisk" href="rezerwacja.html">Umów wizytę</a> <a href="uslugi.html#kat-brwi">Cennik stylizacji brwi</a></p>
+              </div>
+            </article>
+            <article class="wybor__panel" data-kategoria="rzesy">
+              <img class="luk" src="assets/rzesy.jpg" width="1200" height="800" loading="lazy" alt="Zbliżenie na zabieg rzęs wykonywany pęsetą">
+              <div class="wybor__tresc">
+                <p class="wybor__kategoria">Stylizacja rzęs</p>
+                <h3>Lifting i farbowanie rzęs</h3>
+                <p class="wybor__cena"><strong>130 zł</strong><span>1 h</span></p>
+                <p class="wybor__inne">Także: farbowanie rzęs, laminacja brwi i lifting rzęs.</p>
+                <div class="wybor__osoba">
+                  <img src="assets/zespol-julia.jpg" width="533" height="800" loading="lazy" alt="">
+                  <p>Zajmie się Tobą <strong>Julia</strong>, stylistka brwi i rzęs.</p>
+                </div>
+                <p class="wybor__akcje"><a class="przycisk" href="rezerwacja.html">Umów wizytę</a> <a href="uslugi.html#kat-rzesy">Cennik stylizacji rzęs</a></p>
+              </div>
+            </article>
+            <article class="wybor__panel" data-kategoria="wosk">
+              <img class="luk" src="assets/wosk.jpg" width="667" height="1200" loading="lazy" alt="Słoik wosku cukrowego, z którego spływa wosk z łopatki">
+              <div class="wybor__tresc">
+                <p class="wybor__kategoria">Depilacja woskiem</p>
+                <h3>Depilacja twarzy</h3>
+                <p class="wybor__cena"><strong>od 65 zł</strong><span>30 min</span></p>
+                <p class="wybor__opis">Cena zależy od liczby obszarów objętych zabiegiem.</p>
+                <p class="wybor__inne">Także: depilacja wąsika, depilacja brody.</p>
+                <div class="wybor__osoba">
+                  <img src="assets/zespol-kinga.jpg" width="640" height="800" loading="lazy" alt="">
+                  <p>Zajmie się Tobą <strong>Kinga</strong>, kosmetyczka.</p>
+                </div>
+                <p class="wybor__akcje"><a class="przycisk" href="rezerwacja.html">Umów wizytę</a> <a href="uslugi.html#kat-depilacja">Cennik depilacji</a></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JAK WYGLĄDA WIZYTA: księżyc przechodzi od sierpu do pełni -->
+    <section class="sekcja ciemne wizyta" aria-labelledby="wizyta-tytul">
+      <div class="kontener">
+        <h2 id="wizyta-tytul">Jak wygląda wizyta</h2>
+        <ol class="kroki">
+          <li class="krok">
+            <span class="faza faza--1" aria-hidden="true"></span>
+            <h3>Rozmowa</h3>
+            <p>Przed zabiegiem omawiamy Twoje potrzeby i wyjaśniamy, jak będzie przebiegać usługa.</p>
+          </li>
+          <li class="krok">
+            <span class="faza faza--2" aria-hidden="true"></span>
+            <h3>Zabieg</h3>
+            <p>Pracujemy na sprawdzonych kosmetykach. Dbamy o higienę, dokładność i Twój komfort.</p>
+          </li>
+          <li class="krok">
+            <span class="faza faza--3" aria-hidden="true"></span>
+            <h3>Pielęgnacja w domu</h3>
+            <p>Na koniec dostajesz zalecenia do pielęgnacji domowej, dopasowane do potrzeb Twojej skóry.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- O NAS (KRÓTKO) -->
+    <section class="sekcja sekcja--tlo" aria-labelledby="o-nas-tytul">
+      <div class="kontener obok">
+        <img class="luk" src="assets/wnetrze.jpg" width="800" height="1200" loading="lazy" alt="Jasne wnętrze salonu z fotelem, umywalką i roślinami">
+        <div class="o-nas">
+          <h2 id="o-nas-tytul">O nas</h2>
+          <p class="cytat">Zależy nam na naturalnych efektach i komforcie podczas każdej wizyty.</p>
+          <p>Pracownia Luna powstała z myślą o osobach, które chcą zadbać o siebie w spokojnej i przyjaznej atmosferze. Pracujemy w trójkę, każda z nas ma swoją specjalność.</p>
+          <p><a href="o-nas.html">Poznaj nasz zespół</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIE -->
+    <section class="sekcja" aria-labelledby="opinie-tytul">
+      <div class="kontener">
+        <h2 id="opinie-tytul">Opinie</h2>
+        <ul class="opinie">
+          <li>
+            <figure class="opinia">
+              <blockquote><p>Bardzo przyjemne miejsce. Zabieg został dokładnie wyjaśniony, a skóra po wizycie była wyraźnie bardziej nawilżona. Polecam za spokojną atmosferę.</p></blockquote>
+              <figcaption>Anna K. (opinia testowa)</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="opinia">
+              <blockquote><p>Brwi zostały starannie wyregulowane, a efekt wygląda naturalnie. Wizyta przebiegła punktualnie i w miłej atmosferze.</p></blockquote>
+              <figcaption>Karolina M. (opinia testowa)</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="opinia">
+              <blockquote><p>Doceniam indywidualne podejście i jasne wskazówki dotyczące pielęgnacji po zabiegu. Na pewno rozważę kolejną wizytę.</p></blockquote>
+              <figcaption>Natalia S. (opinia testowa)</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WEZWANIE DO REZERWACJI -->
+    <section class="sekcja sekcja--tlo wezwanie" aria-labelledby="wezwanie-tytul">
+      <div class="kontener">
+        <h2 id="wezwanie-tytul">Umów wizytę</h2>
+        <p>Wybierz zabieg i wolny termin w kalendarzu online albo zadzwoń, a pomożemy dobrać termin.</p>
+        <div class="hero__przyciski">
+          <a class="przycisk" href="rezerwacja.html">Umów wizytę</a>
+          <a class="przycisk przycisk--obrys" href="tel:+48000000000">Zadzwoń: +48 000 000 000</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="stopka">
+    <div class="kontener">
+      <p>
+        <strong>Pracownia Luna</strong><br>
+        ul. Przykładowa 12, 30-001 Kraków · <a href="tel:+48000000000">+48 000 000 000</a> · <a href="mailto:kontakt@pracownia-luna.example">kontakt@pracownia-luna.example</a><br>
+        Pracownia Luna Marta Nowak · NIP 0000000000
+      </p>
+      <ul class="stopka__linki">
+        <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+        <li><a href="regulamin-rezerwacji.html">Regulamin rezerwacji</a></li>
+      </ul>
+      <p class="stopka__zrodla">Zdjęcia poglądowe z Unsplash, nie pochodzą z salonu.</p>
+      <p class="stopka__demo">Strona demonstracyjna</p>
+    </div>
+  </footer>
+
+  <div class="pasek-rezerwacji">
+    <a class="przycisk" href="rezerwacja.html">Umów wizytę</a>
+    <a class="przycisk przycisk--obrys" href="tel:+48000000000">Zadzwoń</a>
+  </div>
+
+  <script>
+    // Menu na telefonie działa bez JS; ten skrypt tylko zamyka je po kliknięciu linku i klawiszem Esc.
+    var menu = document.querySelector(".menu-mobilne");
+    if (menu) {
+      menu.addEventListener("click", function (e) {
+        if (e.target.closest("a")) menu.open = false;
+      });
+      menu.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && menu.open) {
+          menu.open = false;
+          menu.querySelector("summary").focus();
+        }
+      });
+    }
+
+    // Status „Teraz otwarte / zamknięte” w hero, liczony według czasu w Polsce. Bez JS napis jest ukryty.
+    var statusOtwarcia = document.getElementById("status-otwarcia");
+    if (statusOtwarcia) {
+      try {
+        var godziny = JSON.parse(statusOtwarcia.dataset.godziny);
+        var teraz = new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Warsaw" }));
+        var dzien = teraz.getDay();
+        var minuty = teraz.getHours() * 60 + teraz.getMinutes();
+        var naMinuty = function (t) { var p = t.split(":"); return p[0] * 60 + Number(p[1]); };
+        var nazwy = ["w niedzielę", "w poniedziałek", "we wtorek", "w środę", "w czwartek", "w piątek", "w sobotę"];
+        var dzis = godziny[dzien];
+        var tekst = "";
+        if (dzis && minuty >= naMinuty(dzis[0]) && minuty < naMinuty(dzis[1])) {
+          tekst = "Teraz otwarte, do " + dzis[1];
+          statusOtwarcia.dataset.stan = "otwarte";
+        } else {
+          for (var i = 0; i < 8; i++) {
+            var d = (dzien + i) % 7, h = godziny[d];
+            if (!h || (i === 0 && minuty >= naMinuty(h[0]))) continue;
+            tekst = "Teraz zamknięte, otwieramy " + (i === 0 ? "dziś" : i === 1 ? "jutro" : nazwy[d]) + " o " + h[0];
+            break;
+          }
+          statusOtwarcia.dataset.stan = "zamkniete";
+        }
+        if (tekst) {
+          statusOtwarcia.textContent = tekst;
+          statusOtwarcia.hidden = false;
+        }
+      } catch (e) {}
+    }
+  </script>
+</body>
+</html>

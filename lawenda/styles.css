@@ -1,0 +1,1644 @@
+/* Pracownia Włosa Lawenda – styl pastelowy, mobile first.
+   Motyw: złote „pasmo włosów” (falista linia) i gałązka lawendy. */
+
+:root {
+  --kolor-glowny: #6b5b95;       /* marka.kolor_glowny – biały tekst: 5,9:1 */
+  --kolor-glowny-ciemny: #54477a;
+  --kolor-akcent: #c9a96e;       /* marka.kolor_akcent – tylko dekoracje albo z ciemnym tekstem: 9:1 */
+  --kolor-akcent-jasny: #f3ead9;
+  --tlo: #fbf9fd;
+  --tlo-sekcji: #f1ecf7;
+  --tlo-karty: #fff;
+  --tekst: #2b2438;
+  --tekst-przygaszony: #5b5169;
+  --linia: #ddd4ea;
+  --sliwka: #2b2438;             /* ciemny pas „Jak wygląda wizyta” */
+  --sliwka-tekst: #ece6f4;       /* na śliwce: 13:1 */
+  --sliwka-przygaszony: #c9bfd9; /* na śliwce: 8:1 */
+  --stopka-tlo: #2b2438;
+  --stopka-tekst: #ece6f4;
+  --stopka-link: #e8d6ae;
+  --promien: 14px;
+  --szerokosc: 68rem;
+  --font-tekst: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-naglowki: "Sitka Banner", "Sitka Heading", Charter, "Bitstream Charter", Cambria, Georgia, serif;
+  /* falista złota kreska pod nagłówkami */
+  --fala: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 10'%3E%3Cpath d='M1 5 C 8 0, 13 0, 20 5 S 32 10, 40 5 S 52 0, 59 5' fill='none' stroke='%23c9a96e' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  /* gałązka lawendy jako punktor */
+  --galazka: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 20'%3E%3Cpath d='M6 19 C 6 13, 7 7, 9 1' fill='none' stroke='%2354477a' stroke-width='1.3' stroke-linecap='round'/%3E%3Cg fill='%236b5b95'%3E%3Cellipse cx='9' cy='2.5' rx='1.6' ry='2.6' transform='rotate(18 9 2.5)'/%3E%3Cellipse cx='6.6' cy='5.8' rx='1.6' ry='2.6' transform='rotate(-28 6.6 5.8)'/%3E%3Cellipse cx='9.6' cy='7.6' rx='1.6' ry='2.6' transform='rotate(30 9.6 7.6)'/%3E%3Cellipse cx='6.4' cy='10.6' rx='1.6' ry='2.6' transform='rotate(-30 6.4 10.6)'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--tlo);
+  color: var(--tekst);
+  font-family: var(--font-tekst);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+  /* miejsce na przyklejony pasek „Umów wizytę” na telefonie */
+  padding-bottom: 4.5rem;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-naglowki);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+}
+
+h3 {
+  font-size: 1.35rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--kolor-glowny);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--kolor-glowny-ciemny);
+}
+
+:focus-visible {
+  outline: 3px solid var(--tekst);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.kontener {
+  width: 100%;
+  max-width: var(--szerokosc);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Link „Przejdź do treści” */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -10rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--tekst);
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+  color: #fff;
+}
+
+/* Przyciski */
+.przycisk {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border: 2px solid var(--kolor-glowny);
+  border-radius: 999px;
+  background: var(--kolor-glowny);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.przycisk:hover {
+  background: var(--kolor-glowny-ciemny);
+  border-color: var(--kolor-glowny-ciemny);
+  color: #fff;
+}
+
+.przycisk--obrys {
+  background: transparent;
+  color: var(--kolor-glowny);
+}
+
+.przycisk--obrys:hover {
+  background: var(--kolor-glowny);
+  color: #fff;
+}
+
+/* przyciski na ciemnym tle: złoty z ciemnym tekstem i jasny obrys */
+.przycisk--jasny {
+  background: var(--kolor-akcent);
+  border-color: var(--kolor-akcent);
+  color: var(--tekst);
+}
+
+.przycisk--jasny:hover {
+  background: var(--kolor-akcent-jasny);
+  border-color: var(--kolor-akcent-jasny);
+  color: var(--tekst);
+}
+
+.przycisk--obrys-jasny {
+  background: transparent;
+  border-color: var(--sliwka-tekst);
+  color: var(--sliwka-tekst);
+}
+
+.przycisk--obrys-jasny:hover {
+  background: var(--sliwka-tekst);
+  border-color: var(--sliwka-tekst);
+  color: var(--tekst);
+}
+
+.przycisk[href^="tel:"] {
+  white-space: nowrap;
+}
+
+.przycisk--maly {
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* Nagłówek strony */
+.naglowek {
+  position: relative; /* punkt odniesienia dla rozwijanego menu na telefonie */
+  background: var(--tlo);
+  border-bottom: 1px solid var(--linia);
+}
+
+.naglowek__gora {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.naglowek__logo {
+  margin-right: auto;
+  border-radius: 6px;
+}
+
+.naglowek__logo img {
+  width: 180px;
+  height: 48px;
+}
+
+/* Menu hamburger na telefonie (poniżej 700 px), działa bez JavaScriptu */
+.menu-mobilne summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--linia);
+  border-radius: 999px;
+  color: var(--tekst);
+  cursor: pointer;
+  list-style: none;
+}
+
+.menu-mobilne summary::-webkit-details-marker {
+  display: none;
+}
+
+.ikona-menu,
+.ikona-menu::before,
+.ikona-menu::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.ikona-menu {
+  position: relative;
+}
+
+.ikona-menu::before,
+.ikona-menu::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.ikona-menu::before {
+  top: -6px;
+}
+
+.ikona-menu::after {
+  top: 6px;
+}
+
+/* po otwarciu trzy kreski zmieniają się w „X” */
+.menu-mobilne[open] .ikona-menu {
+  background: transparent;
+}
+
+.menu-mobilne[open] .ikona-menu::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu-mobilne[open] .ikona-menu::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.menu-mobilne nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  background: var(--tlo);
+  border-bottom: 1px solid var(--linia);
+  box-shadow: 0 8px 16px rgba(43, 36, 56, 0.1);
+}
+
+.menu-mobilne ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-mobilne li + li {
+  border-top: 1px solid var(--linia);
+}
+
+.menu-mobilne a {
+  display: block;
+  padding: 0.85rem 1rem;
+  color: var(--tekst);
+  text-decoration: none;
+}
+
+.menu-mobilne a:hover {
+  color: var(--kolor-glowny);
+  background: var(--tlo-sekcji);
+}
+
+.menu-mobilne a:focus-visible {
+  outline-offset: -3px;
+}
+
+.menu {
+  display: none;
+}
+
+@media (max-width: 24.99em) {
+  .naglowek__logo img {
+    width: 138px;
+    height: auto;
+  }
+
+  .naglowek__gora .przycisk--maly {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+@media (min-width: 43.75em) {
+  .menu-mobilne {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+  }
+}
+
+.menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.1rem;
+  margin: 0;
+  padding: 0 0 0.75rem;
+  list-style: none;
+}
+
+.menu a {
+  display: inline-block;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  color: var(--tekst);
+  text-decoration: none;
+  font-size: 0.98rem;
+}
+
+.menu a:hover {
+  color: var(--kolor-glowny);
+  border-bottom-color: var(--kolor-akcent);
+}
+
+/* ---------- Pasmo: złota falista linia, rysuje się sama ---------- */
+
+.pasmo {
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.pasmo__linia {
+  fill: none;
+  stroke: var(--kolor-akcent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.pasmo__linia--cienka {
+  stroke: #b7a6d8;
+  stroke-width: 1.5;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0 3.5rem;
+  background:
+    radial-gradient(ellipse at 90% 10%, var(--kolor-akcent-jasny) 0, transparent 50%),
+    linear-gradient(180deg, var(--tlo-sekcji), var(--tlo));
+}
+
+.hero__uklad {
+  display: grid;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+/* zdjęcie w kształcie łodyżki (wysoka kapsuła), na telefonie nad tekstem */
+.hero__zdjecie {
+  position: relative;
+  order: -1;
+  justify-self: end;
+  width: 13rem;
+  margin-right: 1.5rem;
+}
+
+.hero__zdjecie img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: 55% 40%;
+  border-radius: 999px;
+  box-shadow: 0 1.5rem 3rem -1.5rem rgba(84, 71, 122, 0.45);
+}
+
+.pasmo--hero {
+  position: absolute;
+  left: -30%;
+  top: -5%;
+  width: 160%;
+  height: 110%;
+}
+
+.pasmo--hero .pasmo__linia {
+  stroke-width: 3;
+  animation: rysuj 2.8s cubic-bezier(0.45, 0.05, 0.25, 1) 0.3s backwards;
+}
+
+.pasmo--hero .pasmo__linia--cienka {
+  stroke-width: 1.5;
+  animation-delay: 0.6s;
+}
+
+@keyframes rysuj {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 10.5vw, 4.4rem);
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  margin-bottom: 0.75rem;
+}
+
+.hero__slogan {
+  color: var(--kolor-glowny);
+  font-family: var(--font-naglowki);
+  font-size: clamp(1.3rem, 4.6vw, 1.7rem);
+  font-style: italic;
+}
+
+.hero__opis {
+  max-width: 34rem;
+  color: var(--tekst-przygaszony);
+}
+
+.hero__przyciski {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero__miejsce {
+  margin: 1.5rem 0 0;
+  color: var(--tekst-przygaszony);
+  font-size: 0.93rem;
+}
+
+/* ---------- Sekcje ---------- */
+
+.sekcja {
+  padding: 3.5rem 0;
+}
+
+.sekcja--tlo {
+  background: var(--tlo-sekcji);
+}
+
+.sekcja__wstep {
+  max-width: 40rem;
+  color: var(--tekst-przygaszony);
+  margin-bottom: 2rem;
+}
+
+/* falista złota kreska pod nagłówkiem sekcji */
+.sekcja h2::after {
+  content: "";
+  display: block;
+  width: 3.75rem;
+  height: 0.6rem;
+  margin-top: 0.6rem;
+  background: var(--fala) no-repeat left center / contain;
+}
+
+/* ---------- Usługi i cennik: karta z kropkami do ceny ---------- */
+
+.cennik {
+  display: grid;
+  gap: 0 3rem;
+  padding: 1.5rem 1.25rem 0.5rem;
+  background: var(--tlo-karty);
+  border: 1px solid var(--linia);
+  border-radius: var(--promien);
+}
+
+.cennik__kategoria {
+  padding-bottom: 1.5rem;
+}
+
+.cennik__kategoria h3 {
+  margin-bottom: 0.6rem;
+  color: var(--kolor-glowny-ciemny);
+  font-size: 1.5rem;
+}
+
+.cennik__uwaga {
+  margin: -0.2rem 0 0.6rem;
+  color: var(--tekst-przygaszony);
+  font-size: 0.93rem;
+  font-style: italic;
+}
+
+.cennik__lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cennik__pozycja {
+  padding: 0.6rem 0;
+}
+
+/* nazwa … kropki … cena */
+.cennik__wiersz {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.cennik__wiersz::after {
+  content: "";
+  order: 1;
+  flex: 1 1 1rem;
+  min-width: 1rem;
+  border-bottom: 2px dotted var(--kolor-akcent);
+  transform: translateY(-0.3em);
+}
+
+.cennik__nazwa {
+  font-weight: 600;
+}
+
+.cennik__cena {
+  order: 2;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cennik__czas {
+  color: var(--tekst-przygaszony);
+  font-size: 0.93rem;
+}
+
+.cennik__opis {
+  margin: 0.15rem 0 0;
+  color: var(--tekst-przygaszony);
+  font-size: 0.95rem;
+}
+
+/* ---------- Zespół z wyborem „Z czym przychodzisz?” ---------- */
+
+.dobor__opcje {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 2.5rem;
+  padding: 0;
+  border: 0;
+}
+
+.dobor__opcje legend {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  padding: 0;
+  font-family: var(--font-naglowki);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.dobor__opcja {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.45rem 1rem;
+  border: 1.5px solid var(--linia);
+  border-radius: 999px;
+  background: var(--tlo-karty);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* prawdziwe pole wyboru leży na całej etykiecie: działa myszą, dotykiem i strzałkami */
+.dobor__opcja input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.dobor__opcja:hover {
+  border-color: var(--kolor-glowny);
+}
+
+.dobor__opcja:has(:checked) {
+  background: var(--kolor-glowny);
+  border-color: var(--kolor-glowny);
+  color: #fff;
+  font-weight: 600;
+}
+
+.dobor__opcja:has(:focus-visible) {
+  outline: 3px solid var(--tekst);
+  outline-offset: 2px;
+}
+
+.zespol {
+  display: grid;
+  gap: 2.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.osoba {
+  transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
+}
+
+.osoba__zdjecie {
+  width: 100%;
+  max-width: 20rem;
+  aspect-ratio: 3 / 4;
+  margin-bottom: 1.25rem;
+  object-fit: cover;
+  object-position: 50% 25%;
+  border-radius: 999px 999px var(--promien) var(--promien);
+  transition: box-shadow 0.35s ease;
+}
+
+.osoba h3 {
+  margin-bottom: 0.15rem;
+  font-size: 1.7rem;
+}
+
+.osoba__rola {
+  color: var(--kolor-glowny);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.osoba__uslugi-tytul {
+  margin: 0 0 0.4rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+.osoba__umow {
+  margin: 1rem 0 0;
+  font-weight: 600;
+}
+
+.znaczniki {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.znaczniki li {
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--tlo-karty);
+  color: var(--tekst);
+  font-size: 0.88rem;
+}
+
+/* wybrana potrzeba: pasujące osoby wyróżnione, pozostałe przygaszone (ale nadal widoczne) */
+.dobor:has([value="damskie"]:checked) .osoba:not([data-dla~="damskie"]),
+.dobor:has([value="kolor"]:checked) .osoba:not([data-dla~="kolor"]),
+.dobor:has([value="meskie"]:checked) .osoba:not([data-dla~="meskie"]),
+.dobor:has([value="dziecko"]:checked) .osoba:not([data-dla~="dziecko"]),
+.dobor:has([value="okazja"]:checked) .osoba:not([data-dla~="okazja"]) {
+  opacity: 0.35;
+  filter: grayscale(0.85);
+}
+
+.dobor:has([value="damskie"]:checked) .osoba[data-dla~="damskie"],
+.dobor:has([value="kolor"]:checked) .osoba[data-dla~="kolor"],
+.dobor:has([value="meskie"]:checked) .osoba[data-dla~="meskie"],
+.dobor:has([value="dziecko"]:checked) .osoba[data-dla~="dziecko"],
+.dobor:has([value="okazja"]:checked) .osoba[data-dla~="okazja"] {
+  transform: translateY(-0.4rem);
+}
+
+.dobor:has([value="damskie"]:checked) .osoba[data-dla~="damskie"] .osoba__zdjecie,
+.dobor:has([value="kolor"]:checked) .osoba[data-dla~="kolor"] .osoba__zdjecie,
+.dobor:has([value="meskie"]:checked) .osoba[data-dla~="meskie"] .osoba__zdjecie,
+.dobor:has([value="dziecko"]:checked) .osoba[data-dla~="dziecko"] .osoba__zdjecie,
+.dobor:has([value="okazja"]:checked) .osoba[data-dla~="okazja"] .osoba__zdjecie {
+  box-shadow: 0 0 0 4px var(--tlo-sekcji), 0 0 0 7px var(--kolor-akcent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .osoba,
+  .osoba__zdjecie,
+  .dobor__opcja {
+    transition: none;
+  }
+}
+
+/* ---------- O nas ---------- */
+
+.o-nas {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.o-nas__zdjecie {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 999px var(--promien) var(--promien) 999px;
+}
+
+.cytat {
+  margin: 0 0 1.25rem;
+}
+
+.cytat blockquote {
+  margin: 0 0 0.5rem;
+  color: var(--kolor-glowny-ciemny);
+  font-family: var(--font-naglowki);
+  font-size: clamp(1.5rem, 5vw, 2.1rem);
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.cytat blockquote p {
+  margin: 0;
+}
+
+.cytat blockquote p::before {
+  content: "„";
+}
+
+.cytat blockquote p::after {
+  content: "”";
+}
+
+.cytat figcaption {
+  color: var(--tekst-przygaszony);
+  font-size: 0.95rem;
+}
+
+.o-nas > div > p {
+  max-width: 38rem;
+  font-size: 1.08rem;
+}
+
+/* ---------- Jak wygląda wizyta: ciemny pas, pasmo rysuje się przy przewijaniu ---------- */
+
+.wizyta {
+  background: var(--sliwka);
+  color: var(--sliwka-tekst);
+}
+
+.wizyta h2 {
+  color: var(--sliwka-tekst);
+}
+
+.pasmo--wizyta {
+  width: 100%;
+  height: 4.5rem;
+  margin: 1.5rem 0 0.5rem;
+  view-timeline: --pasmo block;
+}
+
+.kroki {
+  display: grid;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.krok h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  color: var(--sliwka-tekst);
+  font-size: 1.45rem;
+}
+
+.krok__nr {
+  color: var(--kolor-akcent);
+  font-size: 2.6rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.krok p {
+  margin: 0;
+  color: var(--sliwka-przygaszony);
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .pasmo--wizyta .pasmo__linia {
+      animation: rysuj linear both;
+      animation-timeline: --pasmo;
+      animation-range: entry 10% cover 55%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pasmo--hero .pasmo__linia {
+    animation: none;
+  }
+}
+
+/* ---------- Galeria: mozaika ---------- */
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 11rem;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.galeria li {
+  overflow: hidden;
+  border-radius: var(--promien);
+}
+
+.galeria img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.galeria__szeroka {
+  grid-column: span 2;
+}
+
+.galeria__wysoka {
+  grid-row: span 2;
+}
+
+/* ---------- Opinie ---------- */
+
+.opinie {
+  display: grid;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.opinia {
+  margin: 0;
+}
+
+.opinia blockquote {
+  position: relative;
+  margin: 0 0 0.75rem;
+  padding-top: 2.4rem;
+  font-family: var(--font-naglowki);
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.opinia blockquote p {
+  margin: 0;
+}
+
+/* duży złoty cudzysłów nad opinią */
+.opinia blockquote::before {
+  content: "„";
+  position: absolute;
+  left: -0.1rem;
+  top: -1.6rem;
+  color: var(--kolor-akcent);
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.opinia figcaption {
+  color: var(--tekst-przygaszony);
+  font-size: 0.93rem;
+}
+
+/* ---------- Rezerwacja ---------- */
+
+.rezerwacja__uklad {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* widżet nie rozpycha kolumny na wąskim ekranie */
+  gap: 2.5rem;
+}
+
+.rezerwacja__widget {
+  margin: 0 0 0.75rem;
+}
+
+.rezerwacja__widget:empty {
+  display: none;
+}
+
+.rezerwacja__widget iframe {
+  display: block;
+  width: 100%;
+  min-height: 40rem;
+  border: 0;
+}
+
+.rezerwacja__zapas {
+  color: var(--tekst-przygaszony);
+}
+
+.rezerwacja__bok {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  align-content: start;
+}
+
+.rezerwacja__karta {
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--promien);
+  background: var(--sliwka);
+  color: var(--sliwka-tekst);
+}
+
+.rezerwacja__karta h3 {
+  color: var(--sliwka-tekst);
+}
+
+.rezerwacja__karta :focus-visible {
+  outline-color: var(--sliwka-tekst);
+}
+
+.rezerwacja__przyciski {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+/* status otwarcia: kropka + tekst */
+.status-otwarcia[hidden] {
+  display: none;
+}
+
+.status-otwarcia {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+}
+
+.status-otwarcia::before {
+  content: "";
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+}
+
+.status-otwarcia[data-stan="otwarte"]::before {
+  background: var(--kolor-akcent);
+  border-color: var(--kolor-akcent);
+  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.3);
+}
+
+/* lista zasad z gałązką lawendy zamiast kropki */
+.zasady {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.zasady li,
+.dokument-tresc li {
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.zasady li::before,
+.dokument-tresc li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 0.85rem;
+  height: 1.2rem;
+  background: var(--galazka) no-repeat center / contain;
+}
+
+/* ---------- Kontakt ---------- */
+
+.kontakt {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.kontakt h3 {
+  margin-top: 1.75rem;
+}
+
+.kontakt h3:first-child {
+  margin-top: 0;
+}
+
+.kontakt__adres {
+  margin-bottom: 1rem;
+  font-family: var(--font-naglowki);
+  font-size: clamp(1.45rem, 5vw, 1.9rem);
+  font-style: normal;
+  line-height: 1.3;
+}
+
+.kontakt__linki {
+  font-size: 1.1rem;
+}
+
+.kontakt__godziny {
+  align-self: start;
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--promien);
+  background: var(--tlo-sekcji);
+}
+
+.godziny {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.godziny th,
+.godziny td {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--linia);
+  text-align: left;
+  vertical-align: top;
+}
+
+.godziny th {
+  padding-right: 1rem;
+  font-weight: 600;
+}
+
+.godziny td {
+  white-space: nowrap;
+}
+
+.godziny tr.dzis th,
+.godziny tr.dzis td {
+  color: var(--kolor-glowny-ciemny);
+  font-weight: 700;
+}
+
+.godziny tr.dzis td::after {
+  content: "dziś";
+  margin-left: 0.6rem;
+  padding: 0.05rem 0.55rem;
+  border-radius: 999px;
+  background: var(--kolor-akcent);
+  color: var(--tekst);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- Stopka ---------- */
+
+.stopka {
+  padding: 2.5rem 0 1.5rem;
+  background: var(--stopka-tlo);
+  color: var(--stopka-tekst);
+  font-size: 0.95rem;
+}
+
+.stopka a {
+  color: var(--stopka-link);
+}
+
+.stopka a:hover {
+  color: #fff;
+}
+
+.stopka :focus-visible {
+  outline-color: #fff;
+}
+
+.stopka__linki {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stopka__zrodla {
+  margin: 0;
+  color: var(--stopka-link);
+  font-size: 0.88rem;
+}
+
+.stopka__demo {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: var(--kolor-akcent);
+  color: var(--tekst);
+  font-weight: 600;
+}
+
+/* Przyklejony pasek na telefonie */
+.pasek-rezerwacji {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
+  background: var(--tlo);
+  border-top: 1px solid var(--linia);
+  box-shadow: 0 -4px 16px rgba(43, 36, 56, 0.08);
+}
+
+.pasek-rezerwacji .przycisk {
+  flex: 1 1 auto;
+}
+
+/* ---------- Podstrony: nagłówek, dokumenty prawne, 404 ---------- */
+
+.naglowek-strony {
+  position: relative;
+  overflow: hidden;
+  padding: 2.5rem 0 2.25rem;
+  background:
+    radial-gradient(ellipse at 90% 10%, var(--kolor-akcent-jasny) 0, transparent 50%),
+    var(--tlo-sekcji);
+}
+
+.naglowek-strony .kontener {
+  position: relative;
+  z-index: 1;
+}
+
+.naglowek-strony h1 {
+  font-size: clamp(2.1rem, 8vw, 3.2rem);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.naglowek-strony p {
+  max-width: 40rem;
+  margin: 0;
+  color: var(--tekst-przygaszony);
+}
+
+/* złote pasmo w prawym rogu nagłówka podstrony */
+.naglowek-strony .pasmo {
+  position: absolute;
+  right: -2rem;
+  top: 0;
+  width: 18rem;
+  height: 100%;
+  opacity: 0.9;
+}
+
+.dokument-uklad {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+}
+
+.spis {
+  padding: 1.25rem 1.25rem 0.75rem;
+  border-radius: var(--promien);
+  background: var(--tlo-sekcji);
+}
+
+.sekcja .spis h2 {
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.sekcja .spis h2::after {
+  display: none;
+}
+
+.spis ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.spis a {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.45rem 0;
+  border-top: 1px solid var(--linia);
+  color: var(--tekst);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.spis a:hover {
+  color: var(--kolor-glowny);
+}
+
+.dokument__nr {
+  flex: none;
+  min-width: 1.4em;
+  color: var(--kolor-glowny);
+  font-family: var(--font-naglowki);
+  font-variant-numeric: tabular-nums;
+}
+
+.dokument-tresc {
+  max-width: 44rem;
+}
+
+.dokument-tresc h2 {
+  margin: 2.75rem 0 0.9rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--linia);
+  font-size: clamp(1.4rem, 4.5vw, 1.75rem);
+  scroll-margin-top: 1rem;
+}
+
+.sekcja .dokument-tresc h2::after {
+  display: none;
+}
+
+.dokument-tresc ul {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.dokument-tresc li {
+  margin-bottom: 0.5rem;
+}
+
+.dokument-tresc__dalej {
+  margin-top: 3rem;
+}
+
+.uwaga-szablon {
+  margin: 0 0 2rem;
+  padding: 1rem 1.25rem;
+  background: var(--kolor-akcent-jasny);
+  border-left: 4px solid var(--kolor-akcent);
+  border-radius: 8px;
+}
+
+.do-uzupelnienia {
+  padding: 0 0.3rem;
+  background: #fff3c4;
+  border: 1px dashed #8a6d1d;
+  border-radius: 4px;
+  color: var(--tekst);
+}
+
+/* 404: luźne, poplątane pasmo */
+.zgubiona {
+  display: grid;
+  align-items: center;
+  min-height: 70vh;
+  padding: 3rem 0 4.5rem;
+  background:
+    radial-gradient(ellipse at 85% 15%, var(--kolor-akcent-jasny) 0, transparent 50%),
+    var(--tlo-sekcji);
+}
+
+.zgubiona__uklad {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.pasmo--zgubione {
+  width: 12rem;
+  height: 12rem;
+}
+
+.pasmo--zgubione .pasmo__linia {
+  stroke-width: 3;
+  animation: rysuj 3s cubic-bezier(0.45, 0.05, 0.25, 1) 0.2s backwards;
+}
+
+.pasmo--zgubione .pasmo__linia--cienka {
+  stroke-width: 1.5;
+  animation-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pasmo--zgubione .pasmo__linia {
+    animation: none;
+  }
+}
+
+.zgubiona h1 {
+  font-size: clamp(2.3rem, 9vw, 3.8rem);
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.zgubiona__opis {
+  max-width: 34rem;
+  color: var(--tekst-przygaszony);
+}
+
+.zgubiona__linki {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.zgubiona__linki a {
+  display: inline-block;
+  padding: 0.3rem 0;
+}
+
+/* ---------- Tablet i komputer ---------- */
+
+@media (min-width: 40em) {
+  .zespol {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .galeria {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 13rem;
+  }
+
+  .rezerwacja__przyciski {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 48em) {
+  body {
+    padding-bottom: 0;
+  }
+
+  .pasek-rezerwacji {
+    display: none;
+  }
+
+  .hero {
+    padding: 4.5rem 0 5.5rem;
+  }
+
+  .hero__uklad {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4rem;
+  }
+
+  .hero__zdjecie {
+    order: 2;
+    width: clamp(17rem, 28vw, 22rem);
+    margin-right: 3rem;
+  }
+
+  .sekcja {
+    padding: 5rem 0;
+  }
+
+  .cennik {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 2.25rem 2.25rem 1rem;
+  }
+
+  .zespol,
+  .opinie {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .o-nas {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 4rem;
+  }
+
+  .kroki {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .galeria {
+    grid-auto-rows: 15rem;
+  }
+
+  .kontakt {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .naglowek-strony {
+    padding: 4rem 0 3.5rem;
+  }
+
+  .naglowek-strony .pasmo {
+    right: 4%;
+    width: 26rem;
+  }
+
+  .zgubiona__uklad {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4rem;
+  }
+
+  .pasmo--zgubione {
+    width: 16rem;
+    height: 16rem;
+  }
+}
+
+/* Menu w jednej linii dopiero na szerszym ekranie */
+@media (min-width: 60em) {
+  .naglowek {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .naglowek .kontener {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .naglowek__gora {
+    display: contents;
+  }
+
+  .naglowek__logo {
+    margin-right: auto;
+    padding: 0.5rem 0;
+  }
+
+  .menu {
+    order: 2;
+  }
+
+  .menu ul {
+    padding: 0;
+  }
+
+  .naglowek__gora .przycisk {
+    order: 3;
+  }
+
+  .rezerwacja__uklad {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .rezerwacja__bok {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .rezerwacja__bok .rezerwacja__przyciski {
+    flex-direction: column;
+  }
+
+  .dokument-uklad {
+    grid-template-columns: 16rem minmax(0, 1fr);
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .spis {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .dokument-tresc h2 {
+    scroll-margin-top: 6rem;
+  }
+
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+}
+
+/* bardzo wąski telefon: przycisk z numerem mieści się w karcie */
+@media (max-width: 24.99em) {
+  .rezerwacja__karta {
+    padding: 1.5rem 1rem;
+  }
+
+  .rezerwacja__karta .przycisk {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+
+/* na telefonie pasmo w nagłówku podstrony przechodzi pod tekstem, więc jest bledsze */
+@media (max-width: 47.99em) {
+  .naglowek-strony .pasmo {
+    opacity: 0.4;
+  }
+}
+
+/* ---------- Telefon: kompozycja wyśrodkowana (cenniki, zasady i dokumenty zostają przy lewej) ---------- */
+@media (max-width: 47.99em) {
+  .hero__tekst,
+  .naglowek-strony .kontener,
+  .sekcja h2,
+  .sekcja__wstep,
+  .dobor__opcje legend,
+  .osoba,
+  .o-nas > div,
+  .kroki,
+  .opinia,
+  .rezerwacja__karta,
+  .kontakt > div:first-child,
+  .kontakt__godziny h3,
+  .zgubiona__uklad,
+  .stopka .kontener {
+    text-align: center;
+  }
+
+  .hero__zdjecie {
+    justify-self: center;
+    margin-right: 0;
+  }
+
+  .hero__opis,
+  .sekcja__wstep,
+  .naglowek-strony p,
+  .zgubiona__opis,
+  .osoba__zdjecie,
+  .o-nas > div > p,
+  .pasmo--zgubione {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sekcja h2::after {
+    margin-left: auto;
+    margin-right: auto;
+    background-position: center;
+  }
+
+  .hero__przyciski,
+  .dobor__opcje,
+  .znaczniki,
+  .social,
+  .stopka__linki,
+  .rezerwacja__przyciski,
+  .zgubiona__linki {
+    justify-content: center;
+  }
+
+  .krok h3 {
+    justify-content: center;
+  }
+
+  /* duży cudzysłów nad opinią na środku */
+  .opinia blockquote::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .kontakt__godziny .status-otwarcia,
+  .rezerwacja__karta .status-otwarcia {
+    display: flex;
+    justify-content: center;
+  }
+
+  .stopka__zrodla,
+  .stopka__demo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

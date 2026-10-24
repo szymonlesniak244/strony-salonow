@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ankieta: strona dla salonu</title>
+<style>
+:root {
+  --bg: #f6f5f2; --card: #ffffff; --text: #1f1d1a; --muted: #5c574f;
+  --line: #d9d4ca; --accent: #2f5d50; --accent-text: #ffffff; --danger: #a32020;
+  --focus: #1a56db; --radius: 10px;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-bottom: 120px; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 24px 16px 120px; }
+h1 { font-size: 1.7rem; line-height: 1.2; margin: 0 0 8px; }
+h2 { font-size: 1.25rem; margin: 0 0 4px; }
+h3 { font-size: 1.05rem; margin: 0; }
+p { margin: 0 0 12px; }
+.intro { color: var(--muted); }
+section.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 16px; margin: 20px 0; }
+section.card > .hint { color: var(--muted); font-size: .95rem; }
+label, .label { display: block; font-weight: 600; margin: 14px 0 4px; }
+label small, .label small, .hint { font-weight: 400; color: var(--muted); }
+input[type=text], input[type=email], input[type=tel], input[type=url], input[type=number], input[type=time], select, textarea {
+  width: 100%; max-width: 100%; padding: 10px 12px; border: 1px solid #8f897e; border-radius: 8px; font: inherit; font-weight: 400; background: #fff; color: var(--text);
+}
+textarea { min-height: 88px; resize: vertical; }
+input[type=color] { width: 56px; height: 40px; padding: 2px; border: 1px solid #8f897e; border-radius: 8px; background: #fff; vertical-align: middle; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.check { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; margin: 10px 0; }
+.check input { width: 20px; height: 20px; margin: 2px 0 0; flex: none; }
+.row { display: grid; gap: 0 12px; grid-template-columns: 1fr; }
+@media (min-width: 560px) { .row-2 { grid-template-columns: 1fr 1fr; } .row-3 { grid-template-columns: 2fr 1fr 1fr; } }
+fieldset { border: 0; padding: 0; margin: 14px 0 0; min-width: 0; }
+legend { font-weight: 600; padding: 0; margin-bottom: 4px; }
+.choice { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin: 8px 0; font-weight: 400; }
+.choice input { margin-top: 4px; flex: none; }
+.choice b { display: block; }
+.day { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.day input[type=time] { min-width: 0; }
+.day .name { font-weight: 600; grid-column: 1 / -1; }
+.day .closed { grid-column: 1 / -1; margin: 0; }
+@media (min-width: 560px) { .day { grid-template-columns: 8rem 1fr 1fr auto; } .day .name, .day .closed { grid-column: auto; } }
+.item { border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin: 12px 0; background: #fbfaf8; }
+.item-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.item .item { background: #fff; }
+button { font: inherit; cursor: pointer; border-radius: 8px; padding: 10px 16px; border: 1px solid var(--accent); background: #fff; color: var(--accent); font-weight: 600; }
+button.primary { background: var(--accent); color: var(--accent-text); }
+button.link { border: 0; background: none; padding: 4px; color: var(--danger); font-weight: 400; text-decoration: underline; }
+.add { margin-top: 8px; }
+.bar { position: fixed; left: 0; right: 0; bottom: 0; background: var(--card); border-top: 1px solid var(--line); padding: 12px 16px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.status { width: 100%; text-align: center; font-size: .9rem; color: var(--muted); margin: 0; }
+.domains { display: grid; gap: 0; }
+[hidden] { display: none !important; }
+noscript p { background: #fff3cd; padding: 12px; border-radius: 8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Ankieta: strona internetowa dla salonu</h1>
+  <p class="intro">Na podstawie tych odpowiedzi przygotujemy stronę i rezerwacje online. Pola z gwiazdką (*) są wymagane, resztę możesz pominąć. Odpowiedzi zapisują się same w tej przeglądarce, więc możesz przerwać i wrócić później. Na końcu kliknij „Pobierz plik” i wyślij go nam razem ze zdjęciami i logo.</p>
+  <noscript><p>Ta ankieta potrzebuje włączonego JavaScriptu.</p></noscript>
+
+  <form id="f" novalidate>
+
+  <section class="card">
+    <h2>1. Osoba do kontaktu</h2>
+    <p class="hint">Z kim rozmawiamy o stronie. Te dane nie trafią na stronę.</p>
+    <div class="row row-2">
+      <div><label for="kp-imie">Imię i nazwisko</label><input id="kp-imie" type="text" data-k="kontakt_do_projektu.imie" autocomplete="name"></div>
+      <div><label for="kp-tel">Telefon</label><input id="kp-tel" type="tel" data-k="kontakt_do_projektu.telefon" autocomplete="tel"></div>
+      <div><label for="kp-email">E-mail</label><input id="kp-email" type="email" data-k="kontakt_do_projektu.email" autocomplete="email"></div>
+      <div><label for="kp-pref">Jak najlepiej się kontaktować?</label>
+        <select id="kp-pref" data-k="kontakt_do_projektu.preferowany_kontakt">
+          <option value="">—</option><option value="telefon">Telefon</option><option value="sms">SMS</option><option value="email">E-mail</option><option value="komunikator">Komunikator (WhatsApp, Messenger)</option>
+        </select></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>2. Pakiet strony</h2>
+    <fieldset>
+      <legend>Jaką stronę wybierasz? *</legend>
+      <label class="choice"><input type="radio" name="pakiet" value="jednostronicowy" data-k="pakiet" checked required>
+        <span><b>Jednostronicowa</b><span class="hint">Wszystko na jednej stronie: usługi, cennik, zespół, galeria, rezerwacja i kontakt. Wystarcza większości salonów.</span></span></label>
+      <label class="choice"><input type="radio" name="pakiet" value="wielostronicowy" data-k="pakiet">
+        <span><b>Wielostronicowa</b><span class="hint">Strona główna plus osobne podstrony: usługi i cennik, o nas, galeria, rezerwacja, kontakt. Lepsza, gdy masz dużo usług albo zdjęć.</span></span></label>
+    </fieldset>
+  </section>
+
+  <section class="card">
+    <h2>3. Salon</h2>
+    <label for="f-nazwa">Nazwa salonu *</label>
+    <input id="f-nazwa" type="text" data-k="firma.nazwa" required minlength="2">
+    <label for="f-typ">Rodzaj salonu *</label>
+    <select id="f-typ" data-k="firma.typ" required>
+      <option value="">— wybierz —</option>
+      <option value="fryzjer">Fryzjer</option><option value="barber">Barber</option><option value="kosmetyka">Kosmetyka</option>
+      <option value="paznokcie">Paznokcie</option><option value="brwi_rzesy">Brwi i rzęsy</option><option value="inne">Inne</option>
+    </select>
+    <label for="f-ulica">Ulica i numer *</label>
+    <input id="f-ulica" type="text" data-k="firma.adres.ulica" required autocomplete="address-line1">
+    <div class="row row-2">
+      <div><label for="f-kod">Kod pocztowy * <small>np. 60-000</small></label><input id="f-kod" type="text" data-k="firma.adres.kod" required pattern="\d{2}-\d{3}" inputmode="numeric" autocomplete="postal-code"></div>
+      <div><label for="f-miasto">Miasto *</label><input id="f-miasto" type="text" data-k="firma.adres.miasto" required autocomplete="address-level2"></div>
+    </div>
+    <label for="f-dojazd">Jak do was trafić? <small>np. wejście od podwórka, parking, przystanek</small></label>
+    <textarea id="f-dojazd" data-k="firma.adres.wskazowki_dojazdu"></textarea>
+    <div class="row row-2">
+      <div><label for="f-tel">Telefon salonu *</label><input id="f-tel" type="tel" data-k="firma.telefon" required minlength="7"></div>
+      <div><label for="f-email">E-mail salonu *</label><input id="f-email" type="email" data-k="firma.email" required></div>
+      <div><label for="f-rok">Rok założenia</label><input id="f-rok" type="number" min="1950" max="2100" data-k="firma.rok_zalozenia" data-t="int"></div>
+    </div>
+    <fieldset>
+      <legend>Godziny otwarcia *</legend>
+      <div id="hours"></div>
+    </fieldset>
+    <fieldset>
+      <legend>Media społecznościowe <small class="hint">(adres profilu albo nazwa)</small></legend>
+      <label for="s-ig">Instagram</label><input id="s-ig" type="text" data-k="firma.social.instagram">
+      <label for="s-fb">Facebook</label><input id="s-fb" type="text" data-k="firma.social.facebook">
+      <label for="s-tt">TikTok</label><input id="s-tt" type="text" data-k="firma.social.tiktok">
+    </fieldset>
+  </section>
+
+  <section class="card">
+    <h2>4. Adres strony (domena)</h2>
+    <p class="hint">Domena to adres, który klientki wpisują w przeglądarce, np. salonlawenda.pl. Kosztuje zwykle kilkadziesiąt złotych rocznie. Sprawdzimy, czy wybrana jest wolna.</p>
+    <fieldset>
+      <legend>Co wybierasz? *</legend>
+      <label class="choice"><input type="radio" name="dom-rodzaj" value="kupic_nowa" data-dom="rodzaj" checked>
+        <span><b>Chcę nową domenę</b><span class="hint">Wybierz jedną z propozycji albo wpisz własną.</span></span></label>
+      <label class="choice"><input type="radio" name="dom-rodzaj" value="mam_domene" data-dom="rodzaj">
+        <span><b>Mam już domenę</b><span class="hint">Podłączymy do niej nową stronę.</span></span></label>
+      <label class="choice"><input type="radio" name="dom-rodzaj" value="bez_domeny" data-dom="rodzaj">
+        <span><b>Na razie bez domeny</b><span class="hint">Strona będzie pod darmowym adresem, np. nazwa-salonu.workers.dev.</span></span></label>
+    </fieldset>
+    <div id="dom-new">
+      <fieldset>
+        <legend>Propozycje na podstawie nazwy salonu</legend>
+        <div id="dom-list" class="domains"><p class="hint">Wpisz najpierw nazwę salonu i miasto w punkcie 3.</p></div>
+        <label class="check"><input type="radio" name="dom-pick" value="__inna" id="dom-inna-r"> <span>Inna domena:</span></label>
+        <input type="text" id="dom-inna" aria-label="Inna domena" placeholder="np. mojsalon.pl" pattern="[a-z0-9.\-]+\.[a-z]{2,}" autocapitalize="off" spellcheck="false">
+      </fieldset>
+    </div>
+    <div id="dom-own" hidden>
+      <label for="dom-mam">Twoja domena</label>
+      <input type="text" id="dom-mam" placeholder="np. mojsalon.pl" pattern="[a-z0-9.\-]+\.[a-z]{2,}" autocapitalize="off" spellcheck="false">
+    </div>
+    <div id="dom-backup">
+      <label for="dom-zap">Domeny zapasowe, gdyby wybrana była zajęta <small>(każda w osobnej linii)</small></label>
+      <textarea id="dom-zap" autocapitalize="off" spellcheck="false"></textarea>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>5. Wygląd i opis</h2>
+    <label for="m-slogan">Hasło salonu <small>(do 80 znaków)</small></label>
+    <input id="m-slogan" type="text" maxlength="80" data-k="marka.slogan">
+    <label for="m-krotki">Krótki opis <small>(1–2 zdania, do 240 znaków; pojawi się na górze strony i w Google)</small></label>
+    <textarea id="m-krotki" maxlength="240" data-k="marka.opis_krotki"></textarea>
+    <label for="m-dlugi">O salonie <small>(historia, co was wyróżnia; sekcja „O nas”)</small></label>
+    <textarea id="m-dlugi" data-k="marka.opis_dlugi" style="min-height:140px"></textarea>
+    <fieldset>
+      <legend>Styl strony *</legend>
+      <label class="choice"><input type="radio" name="styl" value="jasny" data-k="marka.styl" required><span><b>Jasny</b><span class="hint">Biel, dużo powietrza, nowocześnie.</span></span></label>
+      <label class="choice"><input type="radio" name="styl" value="ciemny" data-k="marka.styl"><span><b>Ciemny</b><span class="hint">Ciemne tło, mocny kontrast. Pasuje do barberów.</span></span></label>
+      <label class="choice"><input type="radio" name="styl" value="pastelowy" data-k="marka.styl"><span><b>Pastelowy</b><span class="hint">Delikatne, ciepłe kolory.</span></span></label>
+      <label class="choice"><input type="radio" name="styl" value="klasyczny" data-k="marka.styl"><span><b>Klasyczny</b><span class="hint">Elegancko, z szeryfową czcionką w nagłówkach.</span></span></label>
+    </fieldset>
+    <label class="check"><input type="checkbox" id="m-kolory-mam"> <span>Mam kolory firmowe</span></label>
+    <div id="m-kolory" hidden>
+      <div class="row row-2">
+        <div><label for="m-k1">Kolor główny</label><input id="m-k1" type="color" value="#2f5d50"></div>
+        <div><label for="m-k2">Kolor dodatkowy (akcent)</label><input id="m-k2" type="color" value="#c9a96e"></div>
+      </div>
+    </div>
+    <label for="m-ton">Jak chcesz brzmieć? <small>np. ciepło i spokojnie, luźno, elegancko</small></label>
+    <input id="m-ton" type="text" data-k="marka.ton_komunikacji">
+    <label for="m-strony">Strony, które ci się podobają <small>(adresy, każdy w osobnej linii)</small></label>
+    <textarea id="m-strony" data-k="marka.podobajace_sie_strony" data-t="lines"></textarea>
+  </section>
+
+  <section class="card">
+    <h2>6. Usługi i cennik *</h2>
+    <p class="hint">Podziel usługi na kategorie (np. Strzyżenie, Koloryzacja). Czas wpisz w minutach, np. 90 dla 1,5 godziny. Zaznacz „cena od”, jeśli cena zależy np. od długości włosów.</p>
+    <div id="cats"></div>
+    <button type="button" class="add" data-add="cat">+ Dodaj kategorię</button>
+  </section>
+
+  <section class="card">
+    <h2>7. Zespół</h2>
+    <p class="hint">Pomiń, jeśli pracujesz sama/sam albo nie chcesz pokazywać zespołu. Zdjęcia wyślij osobno, nazwane imieniem osoby.</p>
+    <div id="team"></div>
+    <button type="button" class="add" data-add="person">+ Dodaj osobę</button>
+  </section>
+
+  <section class="card">
+    <h2>8. Opinie klientów</h2>
+    <p class="hint">Wpisz tylko prawdziwe opinie, na których publikację autor się zgodził (np. skopiowane z Google). Nie dodajemy ocen w gwiazdkach.</p>
+    <div id="reviews"></div>
+    <button type="button" class="add" data-add="review">+ Dodaj opinię</button>
+  </section>
+
+  <section class="card">
+    <h2>9. Rezerwacje online</h2>
+    <label class="check"><input type="checkbox" data-k="rezerwacje.chce_rezerwacje_online" data-t="bool" checked> <span>Chcę, żeby klienci mogli umawiać się sami przez stronę</span></label>
+    <label for="r-sys">Czego używasz teraz do zapisów?</label>
+    <select id="r-sys" data-k="rezerwacje.aktualny_system">
+      <option value="">—</option><option value="brak">Niczego (zeszyt, telefon)</option><option value="booksy">Booksy</option><option value="versum">Versum</option><option value="fresha">Fresha</option><option value="simplybook">SimplyBook</option><option value="inny">Inny</option>
+    </select>
+    <div class="row row-2">
+      <div><label for="r-odw">Do ilu godzin przed wizytą można ją odwołać?</label><input id="r-odw" type="number" min="0" max="168" data-k="rezerwacje.zasady_odwolania_godzin" data-t="int" placeholder="np. 24"></div>
+      <div><label for="r-wyp">Najkrótszy czas od rezerwacji do wizyty (godziny)</label><input id="r-wyp" type="number" min="0" max="168" data-k="rezerwacje.minimalne_wyprzedzenie_godzin" data-t="int" placeholder="np. 2"></div>
+    </div>
+    <label for="r-start">Co ile pokazywać wolne godziny?</label>
+    <select id="r-start" data-k="rezerwacje.godziny_startu_co">
+      <option value="dlugosc_uslugi">Co długość usługi (np. 10:00, 11:00 dla usługi 1 h)</option>
+      <option value="15_min">Co 15 minut</option><option value="30_min">Co 30 minut</option><option value="60_min">Co godzinę</option>
+    </select>
+    <label for="r-buf">Przerwa po każdej wizycie (minuty) <small>np. na sprzątanie stanowiska</small></label>
+    <input id="r-buf" type="number" min="0" max="120" step="5" data-k="rezerwacje.bufor_po_usludze_minut" data-t="int" placeholder="0">
+    <fieldset>
+      <legend>Przypomnienia o wizycie</legend>
+      <label class="check"><input type="checkbox" data-k="rezerwacje.przypomnienia.email" data-t="bool" checked> <span>E-mailem (bez dodatkowych kosztów)</span></label>
+      <label class="check"><input type="checkbox" data-k="rezerwacje.przypomnienia.sms" data-t="bool"> <span>SMS-em (płatne osobno za każdą wiadomość)</span></label>
+      <p class="hint" style="margin:8px 0 0">Kiedy?</p>
+      <label class="check"><input type="checkbox" value="48" data-k="rezerwacje.przypomnienia.godziny_przed" data-t="list-int"> <span>2 dni przed</span></label>
+      <label class="check"><input type="checkbox" value="24" data-k="rezerwacje.przypomnienia.godziny_przed" data-t="list-int" checked> <span>Dzień przed</span></label>
+      <label class="check"><input type="checkbox" value="2" data-k="rezerwacje.przypomnienia.godziny_przed" data-t="list-int"> <span>2 godziny przed</span></label>
+    </fieldset>
+    <fieldset>
+      <legend>Prośba o opinię</legend>
+      <label class="check"><input type="checkbox" id="op-chce" data-k="rezerwacje.prosba_o_opinie.chce" data-t="bool" checked> <span>Po wizycie wyślij klientowi e-mail z prośbą o opinię</span></label>
+      <div id="op-dni-box"><label for="op-dni">Ile dni po wizycie?</label><input id="op-dni" type="number" min="1" max="30" value="1" data-k="rezerwacje.prosba_o_opinie.dni_po_wizycie" data-t="int"></div>
+    </fieldset>
+    <fieldset>
+      <legend>Zadatek</legend>
+      <label class="check"><input type="checkbox" id="z-chce" data-k="rezerwacje.zadatek.chce" data-t="bool"> <span>Chcę pobierać zadatek przy rezerwacji</span></label>
+      <div id="z-box" hidden>
+        <div class="row row-2">
+          <div><label for="z-tryb">Rodzaj zadatku</label><select id="z-tryb" data-k="rezerwacje.zadatek.tryb"><option value="stala">Stała kwota</option><option value="procent">Procent ceny</option></select></div>
+          <div><label for="z-ile">Kwota (zł) albo procent</label><input id="z-ile" type="number" min="0"></div>
+        </div>
+        <label for="z-kat">Za jakie usługi? <small>(kategorie, każda w osobnej linii; puste = wszystkie)</small></label>
+        <textarea id="z-kat" data-k="rezerwacje.zadatek.dotyczy_kategorii" data-t="lines"></textarea>
+        <label for="z-zwrot">Kiedy zadatek wraca do klienta?</label>
+        <textarea id="z-zwrot" data-k="rezerwacje.zadatek.zasady_zwrotu"></textarea>
+      </div>
+    </fieldset>
+  </section>
+
+  <section class="card">
+    <h2>10. Google</h2>
+    <div class="row row-2">
+      <div><label for="g-miasto">Miasto, w którym chcesz być widoczny *</label><input id="g-miasto" type="text" data-k="seo.miasto" required></div>
+      <div><label for="g-dz">Dzielnica / okolica</label><input id="g-dz" type="text" data-k="seo.dzielnica"></div>
+    </div>
+    <label for="g-slowa">Co klienci wpisują w Google, szukając was? <small>(każde w osobnej linii, np. „fryzjer Jeżyce”)</small></label>
+    <textarea id="g-slowa" data-k="seo.slowa_kluczowe" data-t="lines"></textarea>
+    <label class="check"><input type="checkbox" data-k="seo.profil_google_istnieje" data-t="bool"> <span>Salon ma już wizytówkę w Google Maps</span></label>
+    <label for="g-link">Link do wizytówki w Google Maps</label>
+    <input id="g-link" type="url" data-k="seo.link_google_maps">
+  </section>
+
+  <section class="card">
+    <h2>11. Dane firmy do dokumentów</h2>
+    <p class="hint">Potrzebne do polityki prywatności i regulaminu rezerwacji.</p>
+    <label for="p-nazwa">Pełna nazwa firmy (jak w CEIDG lub KRS)</label><input id="p-nazwa" type="text" data-k="prawne.administrator_danych.nazwa">
+    <label for="p-adres">Adres firmy</label><input id="p-adres" type="text" data-k="prawne.administrator_danych.adres">
+    <div class="row row-2">
+      <div><label for="p-email">E-mail w sprawie danych osobowych</label><input id="p-email" type="email" data-k="prawne.administrator_danych.email"></div>
+      <div><label for="p-nip">NIP <small>(10 cyfr, bez kresek)</small></label><input id="p-nip" type="text" inputmode="numeric" pattern="\d{10}" data-k="prawne.administrator_danych.nip"></div>
+    </div>
+    <label for="p-reg">Dodatkowe zasady dla klientów <small>np. spóźnienia, dzieci, zwierzęta</small></label>
+    <textarea id="p-reg" data-k="prawne.regulamin_dodatkowe_zasady"></textarea>
+  </section>
+
+  <section class="card">
+    <h2>12. Cele i budżet</h2>
+    <p class="hint">Pomaga nam dobrać plan rezerwacji i wycenę. Liczby mogą być przybliżone.</p>
+    <label for="c-ocz">Czego oczekujesz od strony?</label><textarea id="c-ocz" data-k="cele_i_dane.oczekiwania"></textarea>
+    <div class="row row-2">
+      <div><label for="c-wiz">Ile wizyt miesięcznie?</label><input id="c-wiz" type="number" min="0" data-k="cele_i_dane.wizyt_miesiecznie" data-t="int"></div>
+      <div><label for="c-nie">Ile nieodwołanych nieobecności miesięcznie?</label><input id="c-nie" type="number" min="0" data-k="cele_i_dane.nieobecnosci_miesiecznie" data-t="int"></div>
+      <div><label for="c-sr">Średnia cena wizyty (zł)</label><input id="c-sr" type="number" min="0" data-k="cele_i_dane.srednia_cena_wizyty" data-t="num"></div>
+      <div><label for="c-term">Kiedy strona ma ruszyć?</label><input id="c-term" type="text" data-k="cele_i_dane.termin_uruchomienia"></div>
+      <div><label for="c-w1">Budżet na wykonanie od (zł)</label><input id="c-w1" type="number" min="0" data-k="cele_i_dane.budzet_wdrozenia_od" data-t="num"></div>
+      <div><label for="c-w2">do (zł)</label><input id="c-w2" type="number" min="0" data-k="cele_i_dane.budzet_wdrozenia_do" data-t="num"></div>
+      <div><label for="c-a1">Budżet miesięczny od (zł)</label><input id="c-a1" type="number" min="0" data-k="cele_i_dane.budzet_abonamentu_od" data-t="num"></div>
+      <div><label for="c-a2">do (zł)</label><input id="c-a2" type="number" min="0" data-k="cele_i_dane.budzet_abonamentu_do" data-t="num"></div>
+    </div>
+    <label for="c-uw">Uwagi</label><textarea id="c-uw" data-k="cele_i_dane.uwagi"></textarea>
+  </section>
+
+  <section class="card">
+    <h2>13. Zdjęcia i zgody</h2>
+    <p class="hint">Zdjęcia (wnętrze, prace, zespół) i logo wyślij osobno, w najlepszej jakości, jaką masz (z iPhone'a jako JPG, nie HEIC). Zmniejszymy je sami.</p>
+    <label class="check"><input type="checkbox" data-k="zgody.przetwarzanie_danych_briefu" data-t="bool" required> <span>Zgadzam się na wykorzystanie danych z ankiety do przygotowania strony i rezerwacji online. *</span></label>
+    <label class="check"><input type="checkbox" data-k="zgody.prawa_do_zdjec" data-t="bool"> <span>Mam prawa do zdjęć, które wysyłam, a osoby na zdjęciach zgodziły się na publikację.</span></label>
+    <label class="check"><input type="checkbox" data-k="zgody.zgoda_na_portfolio" data-t="bool"> <span>Możecie pokazać gotową stronę w swoim portfolio.</span></label>
+  </section>
+
+  </form>
+</main>
+
+<div class="bar">
+  <button type="button" class="primary" id="b-save">Pobierz plik</button>
+  <button type="button" id="b-load">Wczytaj plik</button>
+  <button type="button" id="b-clear">Wyczyść</button>
+  <input type="file" id="load-file" accept=".json,application/json" hidden>
+  <p class="status" id="status" role="status" aria-live="polite"></p>
+</div>
+
+<template id="t-cat">
+  <div class="item" data-item="cat">
+    <div class="item-head"><h3>Kategoria</h3><button type="button" class="link" data-remove>Usuń kategorię</button></div>
+    <label>Nazwa kategorii * <input type="text" data-f="kategoria" required minlength="2" placeholder="np. Strzyżenie"></label>
+    <div data-list="pozycje"></div>
+    <button type="button" class="add" data-add="pos">+ Dodaj usługę</button>
+  </div>
+</template>
+<template id="t-pos">
+  <div class="item" data-item="pos">
+    <div class="item-head"><h3>Usługa</h3><button type="button" class="link" data-remove>Usuń</button></div>
+    <label>Nazwa usługi * <input type="text" data-f="nazwa" required minlength="2"></label>
+    <div class="row row-3">
+      <label>Czas (minuty) * <input type="number" data-f="czas_min" data-t="int" min="5" max="600" step="5" required></label>
+      <label>Cena (zł) * <input type="number" data-f="cena" data-t="num" min="0" required></label>
+      <label class="check" style="margin-top:38px"><input type="checkbox" data-f="cena_od" data-t="bool"> <span>cena od</span></label>
+    </div>
+    <label>Krótki opis <small>(do 200 znaków)</small> <input type="text" data-f="opis" maxlength="200"></label>
+  </div>
+</template>
+<template id="t-person">
+  <div class="item" data-item="person">
+    <div class="item-head"><h3>Osoba</h3><button type="button" class="link" data-remove>Usuń</button></div>
+    <div class="row row-2">
+      <label>Imię (i nazwisko) * <input type="text" data-f="imie" required minlength="2"></label>
+      <label>Rola <input type="text" data-f="rola" placeholder="np. Stylistka"></label>
+    </div>
+    <label>Kilka słów o tej osobie <small>(do 300 znaków)</small> <textarea data-f="opis" maxlength="300"></textarea></label>
+    <fieldset><legend>Usługi tej osoby</legend><div data-services></div></fieldset>
+  </div>
+</template>
+<template id="t-review">
+  <div class="item" data-item="review">
+    <div class="item-head"><h3>Opinia</h3><button type="button" class="link" data-remove>Usuń</button></div>
+    <label>Treść opinii * <textarea data-f="tekst" required minlength="5"></textarea></label>
+    <div class="row row-2">
+      <label>Autor * <small>np. „Anna K.”</small> <input type="text" data-f="autor" required></label>
+      <label>Skąd? <input type="text" data-f="zrodlo" placeholder="np. Google"></label>
+    </div>
+    <label class="check"><input type="checkbox" data-f="zgoda_na_publikacje" data-t="bool"> <span>Autor zgodził się na publikację (bez tego opinia nie pojawi się na stronie)</span></label>
+  </div>
+</template>
+
+<script>
+(function () {
+  var KEY = 'ankieta-salon-v1';
+  var KEEP = ['tryb', 'firma.domena', 'marka.logo', 'galeria', 'rezerwacje.link_do_rezerwacji', 'rezerwacje.widget_kod'];
+  var base = {};
+  var DAYS = [['pn', 'Poniedziałek'], ['wt', 'Wtorek'], ['sr', 'Środa'], ['cz', 'Czwartek'], ['pt', 'Piątek'], ['sb', 'Sobota'], ['nd', 'Niedziela']];
+  var form = document.getElementById('f');
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  // ---------- godziny ----------
+  var hours = $('#hours');
+  DAYS.forEach(function (d) {
+    var weekend = d[0] === 'nd';
+    hours.insertAdjacentHTML('beforeend',
+      '<div class="day" data-day="' + d[0] + '"><span class="name">' + d[1] + '</span>' +
+      '<input type="time" aria-label="' + d[1] + ' od" value="' + (d[0] === 'sb' ? '09:00' : '10:00') + '">' +
+      '<input type="time" aria-label="' + d[1] + ' do" value="' + (d[0] === 'sb' ? '15:00' : '18:00') + '">' +
+      '<label class="check closed"><input type="checkbox"' + (weekend ? ' checked' : '') + '> <span>nieczynne</span></label></div>');
+  });
+  function syncDay(row) {
+    var closed = $('input[type=checkbox]', row).checked;
+    $$('input[type=time]', row).forEach(function (i) { i.disabled = closed; i.required = !closed; });
+  }
+  $$('.day').forEach(syncDay);
+  hours.addEventListener('change', function (e) { if (e.target.type === 'checkbox') syncDay(e.target.closest('.day')); });
+
+  // ---------- listy powtarzalne ----------
+  function addItem(kind, container, data) {
+    var node = $('#t-' + kind).content.firstElementChild.cloneNode(true);
+    container.appendChild(node);
+    if (kind === 'cat') {
+      var list = $('[data-list=pozycje]', node);
+      var pos = data && data.pozycje && data.pozycje.length ? data.pozycje : [null];
+      pos.forEach(function (p) { addItem('pos', list, p); });
+    }
+    if (kind === 'person') refreshServices();
+    if (data) fillFields(node, data, 'f');
+    if (kind === 'person' && data && data.uslugi) {
+      $$('[data-services] input', node).forEach(function (c) { c.checked = data.uslugi.indexOf(c.value) !== -1; });
+    }
+    return node;
+  }
+  document.addEventListener('click', function (e) {
+    var add = e.target.closest('[data-add]');
+    if (add) {
+      var kind = add.dataset.add;
+      var target = kind === 'cat' ? $('#cats') : kind === 'person' ? $('#team') : kind === 'review' ? $('#reviews') : $('[data-list=pozycje]', add.closest('[data-item=cat]'));
+      var n = addItem(kind, target);
+      var first = $('input, textarea', n); if (first) first.focus();
+      save();
+      return;
+    }
+    var rm = e.target.closest('[data-remove]');
+    if (rm) {
+      var item = rm.closest('[data-item]');
+      if (item.dataset.item === 'pos' && $$('[data-item=pos]', item.parentNode).length === 1) { status('Kategoria musi mieć co najmniej jedną usługę.'); return; }
+      item.remove(); refreshServices(); save();
+    }
+  });
+
+  function serviceNames() {
+    return $$('[data-item=pos] [data-f=nazwa]').map(function (i) { return i.value.trim(); }).filter(Boolean);
+  }
+  function refreshServices() {
+    var names = serviceNames();
+    $$('[data-item=person]').forEach(function (p) {
+      var box = $('[data-services]', p);
+      var checked = $$('input:checked', box).map(function (c) { return c.value; });
+      box.innerHTML = names.length ? '' : '<p class="hint">Najpierw dodaj usługi w punkcie 6.</p>';
+      names.forEach(function (n) {
+        var l = document.createElement('label'); l.className = 'check';
+        var c = document.createElement('input'); c.type = 'checkbox'; c.value = n; c.checked = checked.indexOf(n) !== -1;
+        var s = document.createElement('span'); s.textContent = n;
+        l.appendChild(c); l.appendChild(s); box.appendChild(l);
+      });
+    });
+  }
+  $('#cats').addEventListener('change', function (e) { if (e.target.dataset.f === 'nazwa') refreshServices(); });
+
+  // ---------- pola proste ----------
+  function conv(el, v) {
+    var t = el.dataset.t;
+    if (t === 'int' || t === 'list-int') return v === '' ? undefined : parseInt(v, 10);
+    if (t === 'num') return v === '' ? undefined : parseFloat(String(v).replace(',', '.'));
+    if (t === 'lines') { var a = v.split('\n').map(function (s) { return s.trim(); }).filter(Boolean); return a.length ? a : undefined; }
+    var s = v.trim(); return s === '' ? undefined : s;
+  }
+  function setPath(o, path, v) {
+    var k = path.split('.'), last = k.pop();
+    k.forEach(function (p) { o = o[p] = o[p] || {}; });
+    o[last] = v;
+  }
+  function getPath(o, path) {
+    return path.split('.').reduce(function (a, p) { return a == null ? undefined : a[p]; }, o);
+  }
+  function readFields(root, attr, skipNested) {
+    var out = {};
+    $$('[data-' + attr + ']', root).forEach(function (el) {
+      if (skipNested && el.closest('[data-item]') !== root && el.closest('[data-item]')) return;
+      var key = el.dataset[attr], t = el.dataset.t, v;
+      if (el.type === 'radio') { if (el.checked) setPath(out, key, el.value); return; }
+      if (el.type === 'checkbox') {
+        if (t === 'list' || t === 'list-int') {
+          var arr = getPath(out, key) || []; if (el.checked) arr.push(conv(el, el.value)); setPath(out, key, arr); return;
+        }
+        setPath(out, key, el.checked); return;
+      }
+      v = conv(el, el.value);
+      if (v !== undefined && !(typeof v === 'number' && isNaN(v))) setPath(out, key, v);
+    });
+    return out;
+  }
+  function fillFields(root, data, attr) {
+    $$('[data-' + attr + ']', root).forEach(function (el) {
+      if (attr === 'k' && el.closest('[data-item]')) return;
+      if (attr === 'f' && el.closest('[data-item]') !== root) return;
+      var v = getPath(data, el.dataset[attr]), t = el.dataset.t;
+      if (el.type === 'radio') { el.checked = v === el.value; return; }
+      if (el.type === 'checkbox') {
+        if (t === 'list' || t === 'list-int') { el.checked = Array.isArray(v) && v.map(String).indexOf(el.value) !== -1; return; }
+        el.checked = v === true; return;
+      }
+      el.value = v == null ? '' : (t === 'lines' && Array.isArray(v) ? v.join('\n') : v);
+    });
+  }
+  function tidy(v) {
+    if (Array.isArray(v)) { var a = v.map(tidy).filter(function (x) { return x !== undefined; }); return a.length ? a : undefined; }
+    if (v && typeof v === 'object') {
+      var o = {}; Object.keys(v).forEach(function (k) { var x = tidy(v[k]); if (x !== undefined) o[k] = x; });
+      return Object.keys(o).length ? o : undefined;
+    }
+    return v === '' || v === null ? undefined : v;
+  }
+
+  // ---------- domena ----------
+  var PL = { 'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z' };
+  function slug(s) {
+    return (s || '').toLowerCase().replace(/[ąćęłńóśźż]/g, function (c) { return PL[c]; })
+      .normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, ' i ')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  function suggestions() {
+    var s = slug($('#f-nazwa').value), j = s.replace(/-/g, ''), city = slug($('#f-miasto').value);
+    if (!s) return [];
+    var list = [j + '.pl', s + '.pl'];
+    if (city && s.indexOf(city) === -1) list.push(s + '-' + city + '.pl');
+    list.push(j + '.com.pl', j + '.com', j + '.eu');
+    return list.filter(function (d, i) { return list.indexOf(d) === i && d.split('.')[0].length <= 63; });
+  }
+  function renderDomains(selected) {
+    var box = $('#dom-list'), cur = selected || ($('input[name=dom-pick]:checked', box) || {}).value, list = suggestions();
+    if (!list.length) { box.innerHTML = '<p class="hint">Wpisz najpierw nazwę salonu i miasto w punkcie 3.</p>'; return; }
+    box.innerHTML = '';
+    list.forEach(function (d, i) {
+      var l = document.createElement('label'); l.className = 'check';
+      var r = document.createElement('input'); r.type = 'radio'; r.name = 'dom-pick'; r.value = d;
+      r.checked = cur ? cur === d : i === 0 && !$('#dom-inna-r').checked;
+      var s = document.createElement('span'); s.textContent = d;
+      l.appendChild(r); l.appendChild(s); box.appendChild(l);
+    });
+  }
+  function syncDomainMode() {
+    var mode = ($('input[name=dom-rodzaj]:checked') || {}).value;
+    $('#dom-new').hidden = mode !== 'kupic_nowa';
+    $('#dom-own').hidden = mode !== 'mam_domene';
+    $('#dom-backup').hidden = mode !== 'kupic_nowa';
+  }
+  $('#f-nazwa').addEventListener('input', function () { renderDomains(); });
+  $('#f-miasto').addEventListener('input', function () {
+    renderDomains();
+    var g = $('#g-miasto'); if (!g.dataset.touched) g.value = this.value;
+  });
+  $('#g-miasto').addEventListener('input', function () { this.dataset.touched = '1'; });
+  $('#dom-inna').addEventListener('input', function () { $('#dom-inna-r').checked = true; });
+  function readDomain() {
+    var mode = ($('input[name=dom-rodzaj]:checked') || {}).value, d = { rodzaj: mode };
+    var clean = function (s) { return s.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/.*$/, ''); };
+    if (mode === 'kupic_nowa') {
+      var pick = ($('input[name=dom-pick]:checked') || {}).value;
+      d.nazwa = pick === '__inna' ? clean($('#dom-inna').value) : pick;
+      d.zapasowe = $('#dom-zap').value.split('\n').map(clean).filter(Boolean);
+    } else if (mode === 'mam_domene') d.nazwa = clean($('#dom-mam').value);
+    return d;
+  }
+  function fillDomain(d) {
+    d = d || { rodzaj: 'kupic_nowa' };
+    $$('input[name=dom-rodzaj]').forEach(function (r) { r.checked = r.value === d.rodzaj; });
+    if (d.rodzaj === 'mam_domene') $('#dom-mam').value = d.nazwa || '';
+    if (d.rodzaj === 'kupic_nowa' && d.nazwa) {
+      if (suggestions().indexOf(d.nazwa) !== -1) renderDomains(d.nazwa);
+      else { $('#dom-inna').value = d.nazwa; $('#dom-inna-r').checked = true; renderDomains('__inna'); }
+    }
+    $('#dom-zap').value = (d.zapasowe || []).join('\n');
+    syncDomainMode();
+  }
+
+  // ---------- przełączniki ----------
+  function syncToggles() {
+    $('#m-kolory').hidden = !$('#m-kolory-mam').checked;
+    $('#z-box').hidden = !$('#z-chce').checked;
+    $('#op-dni-box').hidden = !$('#op-chce').checked;
+    syncDomainMode();
+  }
+  form.addEventListener('change', syncToggles);
+
+  // ---------- zbieranie ----------
+  function collect() {
+    var b = readFields(form, 'k', true);
+    b.wersja_briefu = 1;
+    b.data_wypelnienia = new Date().toISOString().slice(0, 10);
+    b.firma = b.firma || {};
+    b.firma.godziny = {};
+    $$('.day').forEach(function (row) {
+      var t = $$('input[type=time]', row), closed = $('input[type=checkbox]', row).checked;
+      b.firma.godziny[row.dataset.day] = closed ? 'nieczynne' : (t[0].value + '-' + t[1].value);
+    });
+    b.firma.domena_wybor = readDomain();
+    b.marka = b.marka || {};
+    if ($('#m-kolory-mam').checked) { b.marka.kolor_glowny = $('#m-k1').value; b.marka.kolor_akcent = $('#m-k2').value; }
+    b.uslugi = $$('[data-item=cat]').map(function (c) {
+      var o = readFields(c, 'f', true);
+      o.pozycje = $$('[data-item=pos]', c).map(function (p) { return readFields(p, 'f', true); });
+      return o;
+    });
+    b.zespol = $$('[data-item=person]').map(function (p) {
+      var o = readFields(p, 'f', true);
+      o.uslugi = $$('[data-services] input:checked', p).map(function (c) { return c.value; });
+      return o;
+    });
+    b.opinie = $$('[data-item=review]').map(function (r) { return readFields(r, 'f', true); });
+    var r = b.rezerwacje = b.rezerwacje || {};
+    if (r.zadatek && r.zadatek.chce) {
+      var ile = parseFloat($('#z-ile').value);
+      if (!isNaN(ile)) r.zadatek[r.zadatek.tryb === 'procent' ? 'procent' : 'kwota'] = ile;
+    } else r.zadatek = { chce: false };
+    if (r.prosba_o_opinie && !r.prosba_o_opinie.chce) delete r.prosba_o_opinie.dni_po_wizycie;
+    if (r.przypomnienia && !r.przypomnienia.email && !r.przypomnienia.sms) delete r.przypomnienia.godziny_przed;
+    // pola uzupełniane przez nas, nie przez klienta: przy edycji wczytanego briefu zostają bez zmian
+    KEEP.forEach(function (k) { var v = getPath(base, k); if (v !== undefined) setPath(b, k, v); });
+    (b.zespol || []).forEach(function (p) {
+      var old = (base.zespol || []).filter(function (o) { return o.imie === p.imie; })[0];
+      if (old && old.zdjecie) p.zdjecie = old.zdjecie;
+    });
+    var out = { $schema: '../../schema/brief.schema.json' };
+    var order = ['wersja_briefu', 'tryb', 'data_wypelnienia', 'pakiet', 'kontakt_do_projektu', 'firma', 'marka', 'uslugi', 'zespol', 'galeria', 'opinie', 'rezerwacje', 'seo', 'prawne', 'cele_i_dane', 'zgody'];
+    order.forEach(function (k) { if (b[k] !== undefined) out[k] = b[k]; });
+    out = tidy(out);
+    (out.uslugi || []).forEach(function (c) { (c.pozycje || []).forEach(function (p) { if (p.cena_od === false) delete p.cena_od; }); });
+    return out;
+  }
+
+  // ---------- wypełnianie ----------
+  function fill(b) {
+    base = b;
+    fillFields(form, b, 'k');
+    $('#g-miasto').dataset.touched = b.seo && b.firma && b.firma.adres && b.seo.miasto !== b.firma.adres.miasto ? '1' : '';
+    var g = (b.firma && b.firma.godziny) || {};
+    $$('.day').forEach(function (row) {
+      var v = g[row.dataset.day]; if (!v) return;
+      var t = $$('input[type=time]', row), cb = $('input[type=checkbox]', row);
+      cb.checked = v === 'nieczynne';
+      if (v !== 'nieczynne') { var p = v.split('-'); t[0].value = p[0]; t[1].value = p[1]; }
+      syncDay(row);
+    });
+    var m = b.marka || {};
+    $('#m-kolory-mam').checked = !!m.kolor_glowny;
+    if (m.kolor_glowny) $('#m-k1').value = m.kolor_glowny;
+    if (m.kolor_akcent) $('#m-k2').value = m.kolor_akcent;
+    var z = (b.rezerwacje && b.rezerwacje.zadatek) || {};
+    $('#z-ile').value = z.tryb === 'procent' ? (z.procent == null ? '' : z.procent) : (z.kwota == null ? '' : z.kwota);
+    $('#cats').innerHTML = ''; $('#team').innerHTML = ''; $('#reviews').innerHTML = '';
+    (b.uslugi && b.uslugi.length ? b.uslugi : [null]).forEach(function (c) { addItem('cat', $('#cats'), c); });
+    refreshServices();
+    (b.zespol || []).forEach(function (p) { addItem('person', $('#team'), p); });
+    (b.opinie || []).forEach(function (r) { addItem('review', $('#reviews'), r); });
+    renderDomains();
+    fillDomain(b.firma && b.firma.domena_wybor);
+    syncToggles();
+  }
+
+  // ---------- zapis w przeglądarce ----------
+  var timer;
+  function status(t) { $('#status').textContent = t; }
+  function save() {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      try { localStorage.setItem(KEY, JSON.stringify(collect())); status('Zapisano w tej przeglądarce.'); } catch (e) { /* bez zapisu */ }
+    }, 400);
+  }
+  form.addEventListener('input', save);
+  form.addEventListener('change', save);
+
+  // ---------- przyciski ----------
+  $('#b-save').addEventListener('click', function () {
+    var bad = $$('input, select, textarea', form).filter(function (el) { return !el.disabled && !el.closest('[hidden]') && !el.checkValidity(); });
+    var cats = $$('[data-item=cat]').length;
+    var dom = readDomain();
+    if (dom.rodzaj !== 'bez_domeny' && dom.nazwa && !/^[a-z0-9.-]+\.[a-z]{2,}$/.test(dom.nazwa)) { status('Domena wygląda na niepoprawną: ' + dom.nazwa); $('#dom-inna').focus(); return; }
+    if (bad.length || !cats) {
+      status('Uzupełnij zaznaczone pole (' + (bad.length) + ' do poprawy).');
+      if (bad[0]) { bad[0].reportValidity(); bad[0].focus(); }
+      return;
+    }
+    var data = collect();
+    var blob = new Blob([JSON.stringify(data, null, 2) + '\n'], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'brief.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    status('Pobrano brief.json. Wyślij go nam razem ze zdjęciami i logo.');
+  });
+  $('#b-load').addEventListener('click', function () { $('#load-file').click(); });
+  $('#load-file').addEventListener('change', function () {
+    var file = this.files[0]; if (!file) return;
+    var rd = new FileReader();
+    rd.onload = function () {
+      try { fill(JSON.parse(rd.result)); save(); status('Wczytano ' + file.name + '.'); }
+      catch (e) { status('Nie udało się wczytać pliku: ' + e.message); }
+    };
+    rd.readAsText(file, 'utf-8');
+    this.value = '';
+  });
+  $('#b-clear').addEventListener('click', function () {
+    if (!confirm('Wyczyścić wszystkie odpowiedzi?')) return;
+    try { localStorage.removeItem(KEY); } catch (e) { /* nic */ }
+    location.reload();
+  });
+
+  // ---------- start ----------
+  var saved = null;
+  try { saved = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { saved = null; }
+  if (saved) { fill(saved); status('Przywrócono zapisane odpowiedzi.'); }
+  else { addItem('cat', $('#cats')); renderDomains(); syncToggles(); }
+})();
+</script>
+</body>
+</html>

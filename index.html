@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Strony dla salonów | Projekt portfolio Szymona Leśniaka</title>
+    <meta name="description" content="System do tworzenia stron dla małych salonów: ankieta dla klienta, schemat danych, zasady dla AI i kalendarz rezerwacji. Dwie strony testowe dla fikcyjnych salonów." />
+    <meta name="theme-color" content="#070b14" />
+    <style>
+      :root {
+        --bg: #070b14;
+        --elev: #0c1322;
+        --surface: rgb(255 255 255 / 0.045);
+        --border: rgb(255 255 255 / 0.1);
+        --text: #e8eef7;
+        --muted: #9eabc2;
+        --accent: #2de2c4;
+        --accent-2: #4c8dff;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        background-image: radial-gradient(60rem 40rem at 110% -10%, rgb(76 141 255 / 0.12), transparent 60%),
+          radial-gradient(50rem 40rem at -20% 20%, rgb(45 226 196 / 0.08), transparent 60%);
+        color: var(--text);
+        font: 400 1.0625rem/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      a { color: var(--accent); }
+      img { display: block; max-width: 100%; height: auto; }
+      .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+      header.top { padding: 20px 0; }
+      header.top a { color: var(--muted); text-decoration: none; font-size: 0.9375rem; }
+      header.top a:hover { color: var(--accent); }
+      .hero { padding: 48px 0 32px; }
+      h1, h2, h3 { line-height: 1.12; letter-spacing: -0.02em; margin: 0; }
+      h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); }
+      h2 { font-size: clamp(1.6rem, 3.6vw, 2.25rem); margin-bottom: 20px; }
+      .grad { background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .lead { color: var(--muted); max-width: 680px; margin: 16px 0 0; font-size: 1.125rem; }
+      .note { display: inline-block; margin-top: 20px; padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--muted); font-size: 0.875rem; }
+      section { padding: 40px 0; }
+      .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; list-style: none; padding: 0; margin: 0; counter-reset: k; }
+      .steps li { counter-increment: k; padding: 18px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); }
+      .steps li::before { content: counter(k); display: grid; place-items: center; width: 28px; height: 28px; margin-bottom: 10px; border-radius: 50%; border: 1px solid rgb(45 226 196 / 0.4); color: var(--accent); font-weight: 600; font-size: 0.875rem; }
+      .steps strong { display: block; margin-bottom: 4px; }
+      .steps span { color: var(--muted); font-size: 0.9375rem; }
+      .sites { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .site { display: grid; overflow: hidden; border: 1px solid var(--border); border-radius: 20px; background: var(--elev); text-decoration: none; color: var(--text); transition: transform .3s, border-color .3s; }
+      .site:hover { transform: translateY(-4px); border-color: rgb(45 226 196 / 0.45); }
+      .site img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; background: #fff; }
+      .site div { padding: 18px 20px 22px; display: grid; gap: 6px; }
+      .site span { color: var(--muted); font-size: 0.9375rem; }
+      .site b { color: var(--accent); font-size: 0.9375rem; }
+      .shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .shots figure { margin: 0; display: grid; gap: 8px; }
+      .shots img { border-radius: 14px; border: 1px solid var(--border); }
+      .shots figcaption { color: var(--muted); font-size: 0.9375rem; }
+      .card { padding: 24px; border: 1px solid var(--border); border-radius: 20px; background: var(--surface); }
+      .card p { margin: 0 0 12px; color: var(--muted); }
+      .card p:last-child { margin: 0; }
+      .files { display: flex; flex-wrap: wrap; gap: 12px; }
+      .files a { padding: 10px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); text-decoration: none; }
+      .files a:hover { border-color: var(--accent); }
+      footer { padding: 40px 0; color: var(--muted); font-size: 0.875rem; border-top: 1px solid var(--border); margin-top: 40px; }
+      @media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
+      @media (max-width: 640px) {
+        .steps, .sites, .shots { grid-template-columns: 1fr; }
+        .hero, section h2 { text-align: center; }
+        .lead { margin-inline: auto; }
+      }
+      @media (prefers-reduced-motion: reduce) { .site { transition: none; } }
+    </style>
+  </head>
+  <body>
+    <header class="top wrap"><a href="https://szymonlesniak244.github.io/projekty.html">← Wróć do portfolio Szymona Leśniaka</a></header>
+
+    <main>
+      <div class="hero wrap">
+        <h1>Strony dla salonów, <span class="grad">z ankiety do gotowej strony</span></h1>
+        <p class="lead">System, w którym klient wypełnia ankietę, a AI (Claude Code) buduje z niej stronę według spisanych przeze mnie zasad, razem z kalendarzem rezerwacji online.</p>
+        <span class="note">Oba salony są fikcyjne: dane, ceny i zdjęcia są przykładowe.</span>
+      </div>
+
+      <section class="wrap" aria-labelledby="jak">
+        <h2 id="jak">Jak to działa</h2>
+        <ol class="steps">
+          <li><strong>Ankieta</strong><span>Klient wypełnia ankietę w przeglądarce: usługi, ceny, godziny, zespół.</span></li>
+          <li><strong>Plik z danymi</strong><span>Ankieta zapisuje plik, który sprawdza schemat danych.</span></li>
+          <li><strong>Zasady dla AI</strong><span>Spisane wymagania: telefon, dostępność, prywatność, bez wymyślonych treści.</span></li>
+          <li><strong>Strona od AI</strong><span>Claude Code buduje stronę, każdą z innym motywem.</span></li>
+          <li><strong>Moja weryfikacja</strong><span>Sprawdzam wygląd i dane na telefonie i komputerze.</span></li>
+        </ol>
+      </section>
+
+      <section class="wrap" aria-labelledby="strony">
+        <h2 id="strony">Dwie strony testowe</h2>
+        <div class="sites">
+          <a class="site" href="lawenda/">
+            <img src="podglad-lawenda.jpg" alt="Strona testowa Pracowni Włosa Lawenda: nagłówek, przyciski i zdjęcie w kształcie kapsuły" width="1280" height="800" loading="lazy" />
+            <div><h3>Pracownia Włosa Lawenda</h3><span>Fryzjer. Motyw: złote pasmo włosów i lawenda.</span><b>Otwórz stronę →</b></div>
+          </a>
+          <a class="site" href="luna/">
+            <img src="podglad-luna.jpg" alt="Strona testowa Pracowni Luna: salon kosmetyczny w nocnym, księżycowym motywie" width="1280" height="800" loading="lazy" />
+            <div><h3>Pracownia Luna</h3><span>Kosmetyka. Motyw: księżyc i nocne niebo.</span><b>Otwórz stronę →</b></div>
+          </a>
+        </div>
+      </section>
+
+      <section class="wrap" aria-labelledby="rezerwacja">
+        <h2 id="rezerwacja">Rezerwacja online działa</h2>
+        <p class="lead" style="margin: -8px 0 20px">Zrzuty z prawdziwego procesu rezerwacji w SimplyBook (konto testowe). Na publicznych stronach demo kalendarz zastąpiłem zrzutami, rezerwacja na zrzutach nie została wysłana.</p>
+        <div class="shots">
+          <figure><img src="rezerwacja-demo/2-usluga.jpg" alt="Wybór usługi: strzyżenie męskie, damskie i dziecięce z czasem i ceną" width="1280" height="1000" loading="lazy" /><figcaption>Wybór usługi z ceną i czasem trwania</figcaption></figure>
+          <figure><img src="rezerwacja-demo/3-termin.jpg" alt="Kalendarz z zaznaczonym dniem i listą dostępnych godzin" width="1280" height="1000" loading="lazy" /><figcaption>Kalendarz z wolnymi godzinami</figcaption></figure>
+          <figure><img src="rezerwacja-demo/4-potwierdzenie.jpg" alt="Podsumowanie rezerwacji: usługa, data, fryzjerka, cena i formularz danych" width="1280" height="1000" loading="lazy" /><figcaption>Podsumowanie i dane klientki</figcaption></figure>
+          <figure><img src="rezerwacja-demo/1-kategoria.jpg" alt="Pierwszy krok rezerwacji: wybór kategorii usług" width="1280" height="1000" loading="lazy" /><figcaption>Pierwszy krok: wybór kategorii</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="wrap" aria-labelledby="rola">
+        <h2 id="rola">Moja rola i rola AI</h2>
+        <div class="card">
+          <p>Kod stron pisze Claude Code. Ja ustalam zasady, wygląd i sprawdzam wynik: każdą stronę oglądam na telefonie i komputerze i pilnuję, żeby AI nie dopisało cen, opinii ani godzin, których nie ma w danych klienta.</p>
+          <p>Przykład błędu, który wyłapałem: pierwsza wersja strony wyglądała generycznie, jak szablon. Dopracowałem ją razem z AI, korzystając z dodatkowych skilli i inspiracji z innych stron. Od tamtej pory każda strona dostaje własny motyw.</p>
+        </div>
+      </section>
+
+      <section class="wrap" aria-labelledby="pliki">
+        <h2 id="pliki">Pliki systemu</h2>
+        <div class="files">
+          <a href="system/ankieta.html">Ankieta dla klienta</a>
+          <a href="system/brief.schema.json">Schemat danych (JSON Schema)</a>
+          <a href="https://github.com/szymonlesniak244/strony-salonow">Kod na GitHubie</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap">Projekt portfolio · <a href="https://szymonlesniak244.github.io">Szymon Leśniak</a> · salony i dane są fikcyjne</footer>
+  </body>
+</html>
