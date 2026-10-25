@@ -7,10 +7,10 @@ Podgląd: https://szymonlesniak244.github.io/strony-salonow/
 
 ## Jak to działa
 1. Klient wypełnia ankietę w przeglądarce (`system/ankieta.html`). Ankieta zapisuje plik z danymi.
-2. Plik sprawdza schemat danych (`system/brief.schema.json`).
-3. Claude Code buduje stronę według spisanych zasad ([ZASADY-DLA-AI.md](ZASADY-DLA-AI.md)): telefon, dostępność, prywatność, bez wymyślonych treści.
+2. Schemat danych (`system/brief.schema.json`) sprawdza, czy plik jest kompletny.
+3. Claude Code buduje stronę według spisanych zasad ([ZASADY-DLA-AI.md](ZASADY-DLA-AI.md)): wygląd na telefonie, dostępność, prywatność, bez wymyślonych treści.
 4. Ja sprawdzam wynik na telefonie i komputerze.
-5. Na stronie działa kalendarz rezerwacji SimplyBook. W tej wersji demo zastąpiłem go zrzutami (`rezerwacja-demo/`).
+5. Kalendarz rezerwacji SimplyBook przetestowałem na koncie testowym. W wersji publicznej zastąpiłem go zrzutami (`rezerwacja-demo/`).
 
 ## Zawartość
 - `lawenda/`: Pracownia Włosa Lawenda (fryzjer)

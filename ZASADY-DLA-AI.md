@@ -10,7 +10,7 @@ Zasady powstają z moich decyzji i poprawek: każda nowa preferencja („nie pod
 - Format briefu opisuje `system/brief.schema.json`. To źródło prawdy o polach.
 - Na prośbę „zrób stronę dla <slug>” AI czyta brief, sprawdza zgodność ze schematem i pisze gotową stronę w zwykłym HTML i CSS. Bez generatorów i bez instalowania pakietów.
 - Każda nowa strona dostaje własny pomysł: motyw, układ, kształty, typografię, animację i wygląd kalendarza. Nie może wyglądać jak szablon z kart.
-- Pomysły już użyte (nie powtarzać): Luna – księżyc, nocne niebo, fazy księżyca w krokach, zdjęcia w kole i łukach; Lawenda – złote pasmo włosów rysujące się linią, pąki lawendy w krokach, zdjęcia w kształcie kapsuły, wybór osoby „Z czym przychodzisz?”.
+- Pomysły już użyte (nie powtarzać): Luna: księżyc, nocne niebo, fazy księżyca w krokach, zdjęcia w kole i łukach; Lawenda: złote pasmo włosów rysujące się linią, pąki lawendy w krokach, zdjęcia w kształcie kapsuły, wybór osoby „Z czym przychodzisz?”.
 - **Brakujące dane: nic nie wymyślaj** (opinii, cen, zdjęć, godzin). Zostaw sekcję pustą albo zapytaj. Na stronach testowych dozwolone są zdjęcia ze stocku z listą źródeł i dopiskiem w stopce.
 
 ## Zasady techniczne strony
