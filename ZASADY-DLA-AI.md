@@ -15,7 +15,7 @@ Zasady powstają z moich decyzji i poprawek: każda nowa preferencja („nie pod
 
 ## Zasady techniczne strony
 1. Zwykły HTML i CSS, bez frameworków. JavaScript tylko minimalny, a strona działa także bez niego.
-2. Zero żądań do zewnętrznych serwerów (bez Google Fonts, Analytics, osadzonych map). Jedyny wyjątek to kalendarz rezerwacji SimplyBook.
+2. Zero żądań do zewnętrznych serwerów (bez Google Fonts, Analytics, osadzonych map). Jedyny wyjątek to kalendarz rezerwacji z własnego systemu.
 3. Strona nie ustawia plików cookie. Jeśli jest kalendarz rezerwacji, polityka prywatności informuje o cookies dostawcy.
 4. Najpierw telefon: kompozycja wyśrodkowana, brak poziomego przewijania od 320 px, przycisk „Umów wizytę” na górze i jako pasek na dole.
 5. Dostępność: jeden `h1`, poprawna hierarchia nagłówków, widoczny focus, kontrast co najmniej 4,5:1, każdy obrazek z `alt`, etykiety w formularzach, link „przejdź do treści”.
@@ -25,12 +25,12 @@ Zasady powstają z moich decyzji i poprawek: każda nowa preferencja („nie pod
 ## Sekcje strony (każda znika, gdy brak danych)
 - Hero, usługi i cennik, zespół, o nas, galeria, opinie, rezerwacja, kontakt.
 - Opinie tylko ze zgodą na publikację. Żadnych wymyślonych opinii ani gwiazdek.
-- Rezerwacja: kalendarz SimplyBook dopasowany kolorami do strony, pod spodem zasady odwołania.
+- Rezerwacja: kalendarz w kolorach salonu, pod spodem zasady odwołania.
 
-## Kalendarz rezerwacji (SimplyBook)
-- Najpierw plik z konfiguracją z briefu: dane firmy, godziny, usługi z czasem i ceną, pracownicy, zasady odwołania, przypomnienia, kolory.
-- Przypomnienia tylko e-mailem. Cały kalendarz po polsku (bez angielskich napisów).
-- Wygląd kalendarza dopasowany do strony. Przed wdrożeniem sprawdzić każdy krok (kategoria, usługa, termin, formularz) na komputerze i telefonie.
+## Kalendarz rezerwacji
+- Dane salonu z briefu: dane firmy, godziny, usługi z czasem i ceną, pracownicy, zasady odwołania, przypomnienia, kolory. Każda widoczna usługa musi mieć pracownika, inaczej klient nie znajdzie terminu.
+- Przypomnienia tylko e-mailem. Cały kalendarz po polsku.
+- Przed wdrożeniem sprawdzić każdy krok (usługa, osoba, termin, formularz) na komputerze i telefonie. Przewijanie zawsze płynne.
 - Bez płatności i danych kart w konfiguracji.
 
 ## SEO

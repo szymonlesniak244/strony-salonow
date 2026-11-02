@@ -11,13 +11,6 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .demo-rezerwacja { display: grid; gap: 14px; }
-    .demo-rezerwacja p { margin: 0; }
-    .demo-rezerwacja__kroki { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .demo-rezerwacja figure { margin: 0; display: grid; gap: 6px; }
-    .demo-rezerwacja img { width: 100%; height: auto; border-radius: 12px; border: 1px solid rgba(0,0,0,.12); background: #fff; }
-    .demo-rezerwacja figcaption { font-size: .875rem; opacity: .8; }
-    @media (max-width: 640px) { .demo-rezerwacja__kroki { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -76,13 +69,14 @@
           <li class="krok">
             <span class="faza faza--3" aria-hidden="true"></span>
             <h2>Gotowe</h2>
-            <p>Potwierdzenie przyjdzie na e-mail, a przypomnienie 24 godziny przed wizytą.</p>
+            <p>Dostaniesz link do wizyty, przez który możesz ją odwołać.</p>
           </li>
         </ol>
 
         <div class="rezerwacja__uklad">
           <div>
-            <div class="rezerwacja__widget demo-rezerwacja" id="widget-rezerwacji"><p><strong>Wersja demonstracyjna.</strong> Na działającej stronie w tym miejscu jest kalendarz rezerwacji SimplyBook. Poniżej zrzuty z prawdziwego, działającego procesu rezerwacji (testowe konto, rezerwacja niewysłana).</p><div class="demo-rezerwacja__kroki"><figure><img src="../rezerwacja-demo/1-kategoria.jpg" alt="Krok 1: wybór kategorii" width="1280" height="1000" loading="lazy" /><figcaption>Krok 1: wybór kategorii</figcaption></figure><figure><img src="../rezerwacja-demo/2-usluga.jpg" alt="Krok 2: usługa z ceną i czasem" width="1280" height="1000" loading="lazy" /><figcaption>Krok 2: usługa z ceną i czasem</figcaption></figure><figure><img src="../rezerwacja-demo/3-termin.jpg" alt="Krok 3: kalendarz z wolnymi godzinami" width="1280" height="1000" loading="lazy" /><figcaption>Krok 3: kalendarz z wolnymi godzinami</figcaption></figure><figure><img src="../rezerwacja-demo/4-potwierdzenie.jpg" alt="Krok 4: podsumowanie i dane klientki" width="1280" height="1000" loading="lazy" /><figcaption>Krok 4: podsumowanie i dane klientki</figcaption></figure></div></div>
+            <div class="rezerwacja__widget" id="widget-rezerwacji"><iframe data-rezerwacje title="Rezerwacja wizyty" src="https://rezerwacje-dla-salonow.vercel.app/pracownia-luna/osadzenie" loading="lazy"></iframe></div>
+            <p class="rezerwacja__zapas">Kalendarz się nie wyświetla? <a href="https://rezerwacje-dla-salonow.vercel.app/pracownia-luna/rezerwacja" rel="noopener">Otwórz rezerwację na osobnej stronie</a>.</p>
           </div>
 
           <aside class="rezerwacja__bok" aria-label="Pomoc w rezerwacji">
@@ -194,5 +188,6 @@
       } catch (e) {}
     }
   </script>
+  <script src="https://rezerwacje-dla-salonow.vercel.app/osadzenie.js" defer></script>
 </body>
 </html>
