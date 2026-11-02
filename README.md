@@ -10,7 +10,7 @@ Podgląd: https://szymonlesniak244.github.io/strony-salonow/
 2. Schemat danych (`system/brief.schema.json`) sprawdza, czy plik jest kompletny.
 3. Claude Code buduje stronę według spisanych zasad ([ZASADY-DLA-AI.md](ZASADY-DLA-AI.md)): wygląd na telefonie, dostępność, prywatność, bez wymyślonych treści.
 4. Ja sprawdzam wynik na telefonie i komputerze.
-5. Kalendarz rezerwacji działa na moim własnym systemie, który zastąpił SimplyBook. Rezerwację można przejść na obu stronach, a dane testowe znikają 7 dni po terminie.
+5. Kalendarz rezerwacji działa na moim własnym systemie. Rezerwację można przejść na obu stronach, a dane testowe znikają 7 dni po terminie.
 
 ## Zawartość
 - `lawenda/`: Pracownia Włosa Lawenda (fryzjer)
