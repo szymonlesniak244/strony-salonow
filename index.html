@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
     <title>Strony dla salonów | Projekt portfolio Szymona Leśniaka</title>
-    <meta name="description" content="System do tworzenia stron dla małych salonów: ankieta dla klienta, schemat danych, zasady dla AI i kalendarz rezerwacji. Dwie strony testowe dla fikcyjnych salonów." />
+    <meta name="description" content="System do tworzenia stron dla małych salonów: ankieta dla klienta, schemat danych, zasady dla AI i kalendarz rezerwacji. Trzy strony testowe dla fikcyjnych salonów." />
     <meta name="theme-color" content="#111113" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -61,7 +61,7 @@
       .steps li:last-child strong::before { content: ""; width: 14px; height: 14px; background: currentColor; -webkit-mask: var(--check) center / contain no-repeat; mask: var(--check) center / contain no-repeat; }
       .steps strong { display: block; margin-bottom: 4px; font-weight: 500; }
       .steps span { color: var(--muted); font-size: 0.9375rem; }
-      .sites { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .sites { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
       .site { display: grid; overflow: hidden; border: 1px solid var(--border-strong); border-radius: 18px; background: var(--elev); text-decoration: none; color: var(--text); transition: border-color .15s; }
       .site:hover { border-color: rgb(237 237 237 / 0.24); }
       .site img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; background: #fff; border-bottom: 1px solid var(--border); }
@@ -76,7 +76,7 @@
       .files a:hover { background: #2a2a2d; border-color: rgb(237 237 237 / 0.2); }
       footer.wrap { padding: 32px 20px; color: var(--muted); font-size: 0.875rem; border-top: 1px solid var(--border); margin-top: 40px; }
       :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-      @media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
+      @media (max-width: 900px) { .steps, .sites { grid-template-columns: 1fr 1fr; } }
       @media (max-width: 640px) {
         .steps, .sites { grid-template-columns: 1fr; }
         .hero, section h2 { text-align: center; }
@@ -93,7 +93,7 @@
       <div class="hero wrap">
         <h1>Strony dla salonów: <span class="grad">od ankiety do gotowej strony</span></h1>
         <p class="lead">System, w którym klient wypełnia ankietę, a AI (Claude Code) buduje z niej stronę według spisanych przeze mnie zasad, razem z kalendarzem rezerwacji online.</p>
-        <span class="note">Oba salony są fikcyjne: dane, ceny i zdjęcia są przykładowe.</span>
+        <span class="note">Wszystkie salony są fikcyjne: dane, ceny i zdjęcia są przykładowe.</span>
       </div>
 
       <section class="wrap" aria-labelledby="jak">
@@ -108,7 +108,7 @@
       </section>
 
       <section class="wrap" aria-labelledby="strony">
-        <h2 id="strony">Dwie strony testowe</h2>
+        <h2 id="strony">Trzy strony testowe</h2>
         <div class="sites">
           <a class="site" href="lawenda/">
             <img src="podglad-lawenda.jpg" alt="Strona testowa Pracowni Włosa Lawenda: nagłówek, przyciski i zdjęcie w kształcie kapsuły" width="1280" height="800" loading="lazy" />
@@ -118,13 +118,17 @@
             <img src="podglad-luna.jpg" alt="Strona testowa Pracowni Luna: salon kosmetyczny w nocnym, księżycowym motywie" width="1280" height="800" loading="lazy" />
             <div><h3>Pracownia Luna</h3><span>Kosmetyka. Motyw: księżyc i nocne niebo.</span><b>Otwórz stronę</b></div>
           </a>
+          <a class="site" href="kotwica/">
+            <img src="podglad-kotwica.jpg" alt="Strona testowa Kotwica Barber Club: granatowy nagłówek z kotwicą na linie i zdjęcie wnętrza barbershopu" width="1280" height="800" loading="lazy" />
+            <div><h3>Kotwica Barber Club</h3><span>Barber. Motyw: port, lina i mosiężna kotwica.</span><b>Otwórz stronę</b></div>
+          </a>
         </div>
       </section>
 
       <section class="wrap" aria-labelledby="rezerwacja">
         <h2 id="rezerwacja">Jak działa rezerwacja online</h2>
         <p class="lead" style="margin: -8px 0 20px">Rezerwacje działają na moim własnym systemie: wybór usługi, osoby i terminu, potwierdzenie i odwołanie wizyty, a dla salonu panel z kalendarzem, usługami, zespołem i ustawieniami. Salony są fikcyjne, a dane testowe znikają 7 dni po terminie.</p>
-        <p><a href="lawenda/index.html#rezerwacja">Wypróbuj w Lawendzie</a> albo <a href="luna/rezerwacja.html">w Lunie</a>.</p>
+        <p>Wypróbuj w <a href="lawenda/index.html#rezerwacja">Lawendzie</a>, <a href="luna/rezerwacja.html">Lunie</a> albo <a href="kotwica/rezerwacja.html">Kotwicy</a>.</p>
       </section>
 
       <section class="wrap" aria-labelledby="rola">
